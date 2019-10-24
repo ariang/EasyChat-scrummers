@@ -4,13 +4,19 @@
 
 <div class="content ">
     <div class="chat">
-        <p>Anonymous4: Hi Chat!</p>
-        <form>
-            <input id="text" placeholder="chatte hier..." type="text">
-        </form>
+        <p><strong>Preview:</strong> {{box.value}}</p>
 
+        <div *ngFor="let msg of msgs">
+            {{msg}}
+            {{time}}
+        </div>
+        <form type="post">
+            <input type="text" #box id="msgbox" name="msgbox" [(ngModel)]='msgbox' placeholder="chatte hier..."
+                maxlength="1000" (keyup)="0">
+            <button id="submitbtn" [hidden]="!msgbox" (click)="onEnter(box.value)">send</button>
+        </form>
     </div>
-    <div class="users">
+    <div class=" users">
         <p>Users online:</p>
         <ul>
             <li>Anonymous1</li>

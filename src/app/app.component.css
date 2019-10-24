@@ -46,10 +46,15 @@ body {
 	width: 24%;
 }
 
-#text {
+#msgbox {
 	position: fixed;
 	bottom: 10%;
 	width: 51.9%;
+}
+#submitbtn {
+	position: fixed;
+	bottom: 10%;
+	right: 24%;
 }
 .footer {
 	background-color: #a4a4a4;
