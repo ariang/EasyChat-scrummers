@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <h4>Chat-Bar Component: </h4>
+        <div class="input-group mb-3">
+            <input type="text" rows="2" class="form-control" [(ngModel)]="chatmessage" (keyup.enter)="sendMessage()">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" id="submitbtn" [hidden]="!chatmessage"
+                    (click)="sendMessage()">send</button>
+            </div>
+        </div>
+    </div>

@@ -1,9 +1,6 @@
-.footer {
-	box-sizing: border-box;
-	border-top: solid whitesmoke 3px;
-	height: 10%;
-	width: 100%;
+.container-fluid {
 	bottom: 0;
 	position: fixed;
 	background-color: #a4a4a4;
+	height: 50px;
 }

@@ -1,13 +1,7 @@
-.top {
-	box-sizing: border-box;
-	border-bottom: solid 3px whitesmoke;
-	width: 100%;
-	padding: auto;
-	text-align: center;
-}
-.top h1 {
-	font-size: 5em;
-	margin-bottom: 9px;
+.container-fluid {
+	height: 110px;
+	background: #a4a4a4;
+	display: inline-block;
 }
 
 #fhsg {
