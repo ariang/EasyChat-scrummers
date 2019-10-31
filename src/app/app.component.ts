@@ -11,8 +11,6 @@ export class AppComponent {
 	@ViewChild(ChatHistoryComponent, { static: false })
 	private chatHistory: ChatHistoryComponent;
 
-	message: string;
-
 	public recieveMessage($event) {
 		this.chatHistory.saveMessage($event);
 	}

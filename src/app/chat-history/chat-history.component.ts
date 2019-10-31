@@ -8,8 +8,6 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 export class ChatHistoryComponent implements OnInit {
 	public msgs: string[] = [];
 
-	@Input() message: string;
-
 	saveMessage(value: string) {
 		this.msgs.push(value);
 	}
