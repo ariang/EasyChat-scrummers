@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Message } from '../message';
+import { UserService } from '../user.service';
 
 @Component({
 	selector: 'app-chat-history',
@@ -6,12 +8,26 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 	styleUrls: [ './chat-history.component.css' ]
 })
 export class ChatHistoryComponent implements OnInit {
-	public msgs: string[] = [];
+	public msgs: Message[] = [];
+	public message: Message;
+	name: string;
 
+	//Speicherfunktion
 	saveMessage(value: string) {
-		this.msgs.push(value);
+		this.message = new Message();
+		this.message.content = value;
+		this.message.timesent = this.getTimeStamp();
+		this.msgs.push(this.message);
 	}
-	constructor() {}
+	//ZeitStempel Funktion
+	getTimeStamp() {
+		var now = new Date();
+		return now.getHours() + ':' + (now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes());
+	}
 
-	ngOnInit() {}
+	constructor(private data: UserService) {}
+
+	ngOnInit() {
+		this.data.currentname.subscribe((name) => (this.name = name));
+	}
 }

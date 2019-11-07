@@ -1,5 +1,6 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Message } from '../message';
+import { UserService } from '../user.service';
 
 @Component({
 	selector: 'app-chat-bar',
@@ -7,16 +8,23 @@ import { Message } from '../message';
 	styleUrls: [ './chat-bar.component.css' ]
 })
 export class ChatBarComponent implements OnInit {
-	constructor() {}
-	ngOnInit() {}
+	name: string;
+	constructor(private data: UserService) {}
+	ngOnInit() {
+		this.data.currentname.subscribe((name) => (this.name = name));
+	}
 
 	public chatmessage: string;
 
 	@Output() messageEvent = new EventEmitter<string>();
 
 	sendMessage(): void {
-		this.messageEvent.emit(this.chatmessage);
-		alert('Sie haben gerade diese Message gesendet: ' + this.chatmessage);
+		if (this.chatmessage.trim().length == 0) {
+			alert('Invalid Message!');
+		} else {
+			this.chatmessage = this.chatmessage.trim();
+			this.messageEvent.emit(this.chatmessage);
+		}
 		this.chatmessage = '';
 	}
 }

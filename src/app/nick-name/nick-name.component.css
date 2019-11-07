@@ -1,0 +1,8 @@
+.input-group,
+.font-weight-light {
+	padding-top: 10px;
+}
+
+::placeholder {
+	color: red;
+}

@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div id="historycon" class="row">
+        <!--placeholder-->
+        <div class="col-3"></div>
+
+        <!--Username Input-->
+        <div class="col-6">
+            <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="newname" [hidden]="name" (keyup.enter)="newName()"
+                    placeholder="Set Username before Chatting!" maxlength="12" />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" id="submitbtn" [hidden]="name" [hidden]="!newname"
+                        (click)="newName()">set</button>
+                </div>
+            </div>
+            <p class="font-weight-light">Your Username: {{name}}</p>
+        </div>
+
+        <!--placeholder-->
+        <div class="col-3"></div>
+    </div>
+</div>

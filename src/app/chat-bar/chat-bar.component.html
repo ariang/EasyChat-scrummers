@@ -1,12 +1,20 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <h4>Chat-Bar Component: </h4>
-        <div class="input-group mb-3">
-            <input type="text" rows="2" class="form-control" [(ngModel)]="chatmessage" (keyup.enter)="sendMessage()"
-                maxlength="1000">
+        <!--placeholder-->
+        <div class="col-3"></div>
+
+        <!--Chatbox disabled while no Username-->
+        <div class="input-group col-6">
+            <textarea type="text" rows="2" class="form-control" [disabled]="!name" [(ngModel)]="chatmessage"
+                (keyup.enter)="sendMessage()" maxlength="1000"></textarea>
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" id="submitbtn" [hidden]="!chatmessage"
                     (click)="sendMessage()">send</button>
             </div>
         </div>
+
+        <!--placeholder-->
+        <div class="col-3"></div>
+
     </div>
+</div>

@@ -1,3 +1,16 @@
 .scrollable {
-	overflow-y: scroll;
+	overflow-y: auto;
+}
+.history {
+	height: 190px;
+	display: block;
+	margin-right: 0;
+}
+p {
+	margin: 0;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+.container {
+	height: 200px;
 }
