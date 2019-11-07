@@ -20,7 +20,7 @@ export class ChatBarComponent implements OnInit {
 
 	sendMessage(): void {
 		if (this.chatmessage.trim().length == 0) {
-			alert('Invalid Message!');
+			alert('Nachricht darf nicht leer sein!');
 		} else {
 			this.chatmessage = this.chatmessage.trim();
 			this.messageEvent.emit(this.chatmessage);

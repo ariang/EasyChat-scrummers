@@ -19,7 +19,7 @@ export class NickNameComponent implements OnInit {
 		if (this.newname.match('^[.A-Za-z0-9_-]+$')) {
 			this.data.setName(this.newname);
 		} else {
-			alert('Username cannot contain special symbols!');
+			alert('Username darf keine Sonderzeichen enthalten');
 		}
 	}
 }
