@@ -8,6 +8,7 @@ import { UserService } from '../user.service';
 })
 export class NickNameComponent implements OnInit {
 	newname: string;
+	changename: string;
 	name: string;
 	constructor(private data: UserService) {}
 
@@ -16,8 +17,25 @@ export class NickNameComponent implements OnInit {
 	}
 	//Set the new Name with RegEx
 	newName() {
-		if (this.newname.match('^[.A-Za-z0-9_-]+$')) {
+		if (this.checkName(this.newname)) {
 			this.data.setName(this.newname);
+		} else {
+			this.newname = '';
+		}
+	}
+	changeName() {
+		if (this.changename == this.newname) {
+			alert('Es darf nicht der gleiche Nickname sein');
+		} else {
+			if (this.checkName(this.changename)) {
+				this.data.setName(this.changename);
+				this.changename = '';
+			}
+		}
+	}
+	checkName(value: string) {
+		if (value.match('^[.A-Za-z0-9_-]+$')) {
+			return true;
 		} else {
 			alert('Username darf keine Sonderzeichen enthalten');
 		}

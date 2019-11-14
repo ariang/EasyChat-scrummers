@@ -6,3 +6,12 @@
 ::placeholder {
 	color: red;
 }
+
+#change {
+	float: right;
+	margin-top: 10px;
+}
+.col-6 {
+	padding-left: 0;
+	padding-right: 0;
+}

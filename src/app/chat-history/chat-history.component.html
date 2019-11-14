@@ -1,18 +1,51 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
 <div class="container-fluid">
+
     <div class="row">
-        <!--placeholder-->
-        <div class="col-3"></div>
+        <!--Fish and bubbles-->
+        <div class="col-3">
+            <div class="bubbles bubble-1"></div>
+            <div class="bubbles bubble-5"></div>
+            <div class="bubbles bubble-2"></div>
+            <div class="bubbles bubble-6"></div>
+            <div class="bubbles bubble-3"></div>
+            <div class="bubbles bubble-7"></div>
+            <div class="bubbles bubble-4"></div>
+            <div class="bubbles bubble-8"></div>
+            <div class="bubbles bubble-10"></div>
+            <div class="bubbles bubble-12"></div>
+
+            <div class="fish">
+                <div class="fish-body">
+                    <div class="eye">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+                <div class="fin"></div>
+                <div class="fin fin-bottom"></div>
+            </div>
+        </div>
+
 
         <!--Historybox-->
         <div class="history col-6 scrollable border rounded" #scrollMe [scrollTop]="scrollMe.scrollHeight" id=textarea>
-            <p class="message font-weight-light" *ngFor="let msg of msgs">
+
+            <p class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
                 <!---Name Message Content & Timesent-->
                 {{ name }} : {{ msg.content }} <font size=0.5>{{ msg.timesent }}</font>
             </p>
+
         </div>
 
         <!--placeholder-->
-        <div class="col-3"></div>
+        <div class="col-3">
+
+
+        </div>
+
 
     </div>
+
 </div>

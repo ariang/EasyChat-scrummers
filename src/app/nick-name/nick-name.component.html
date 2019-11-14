@@ -5,15 +5,51 @@
 
         <!--Username Input-->
         <div class="col-6">
-            <div class="input-group">
-                <input type="text" class="form-control" [(ngModel)]="newname" [hidden]="name" (keyup.enter)="newName()"
+            <div class="input-group" [hidden]="name">
+                <input type="text" class="form-control" [(ngModel)]="newname" (keyup.enter)="newName()"
                     placeholder="Set Username before Chatting!" maxlength="12" />
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" id="submitbtn" [hidden]="name" [hidden]="!newname"
+                    <button class="btn btn-outline-secondary" id="submitbtn" [hidden]="!newname"
                         (click)="newName()">set</button>
                 </div>
             </div>
-            <p class="font-weight-light">Your Username: {{name}}</p>
+
+            <div>
+                <p class="font-weight-light float-left" [hidden]="!name">Your Username: {{name}}</p>
+
+
+                <button type="button" [hidden]="!name" class="btn btn-light btn-sm" id="change" data-toggle="modal"
+                    data-target="#exampleModal">
+                    Nickname ändern
+                </button>
+            </div>
+
+
+            <div class="modal fade text-dark" id="exampleModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Dein Nickname: {{name}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body ">
+                            Nickname ändern auf:
+                            <input type="text" class="form-control" (keyup.enter)="changeName()"
+                                [(ngModel)]="changename" maxlength="12" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" id="changebtn" data-dismiss="modal"
+                                (click)="changeName()">set</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
         <!--placeholder-->
