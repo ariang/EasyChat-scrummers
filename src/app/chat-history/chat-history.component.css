@@ -8,12 +8,14 @@
 	display: block;
 	margin-right: 0;
 	background: #2eaded;
+	opacity: 80%;
 }
 p {
 	margin: 0;
 	white-space: pre-wrap;
 	word-break: break-word;
 	font-weight: bold;
+	opacity: 100%;
 }
 .container {
 	height: 240px;

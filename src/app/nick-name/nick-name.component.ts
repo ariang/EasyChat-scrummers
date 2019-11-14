@@ -24,12 +24,13 @@ export class NickNameComponent implements OnInit {
 		}
 	}
 	changeName() {
-		if (this.changename == this.newname) {
+		if (this.name == this.changename) {
 			alert('Es darf nicht der gleiche Nickname sein');
+			return false;
 		} else {
 			if (this.checkName(this.changename)) {
 				this.data.setName(this.changename);
-				this.changename = '';
+				this.changename = null;
 			}
 		}
 	}
