@@ -24,12 +24,25 @@ export class ChatHistoryComponent implements OnInit {
 			this.message.content.includes('hat den Chat betreten')
 		) {
 			this.message.namechange = true;
+			this.message.firstmessage = false;
 			console.log(this.message.namechange);
+		} else {
+			this.message.namechange = false;
+
+			if (
+				this.msgs[this.msgs.length - 1].name !== null &&
+				this.msgs[this.msgs.length - 1].name == this.name &&
+				this.msgs[this.msgs.length - 1].namechange
+			) {
+				this.message.firstmessage = true;
+			} else {
+				this.message.firstmessage = false;
+			}
 		}
+
 		this.msgs.push(this.message);
 		if (this.msgs.length == 11) {
 			this.msgs.splice(0, 1);
-			console.log(this.msgs);
 		}
 	}
 	//ZeitStempel Funktion

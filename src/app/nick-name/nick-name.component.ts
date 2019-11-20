@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../user.service';
 
 @Component({
@@ -46,10 +46,10 @@ export class NickNameComponent implements OnInit {
 		}
 	}
 	checkName(value: string) {
-		if (value.match('^[.A-Za-z0-9_-]+$')) {
+		if (value.match('^(?=.*[0-9A-Za-z])([\u00C0-\u017F.!@#$%^&*(),?":{}|<>A-Za-z0-9_-]+)$')) {
 			return true;
 		} else {
-			alert('Username darf keine Sonderzeichen enthalten');
+			alert('Username darf nicht nur Sonderzeichen enthalten');
 		}
 	}
 }
