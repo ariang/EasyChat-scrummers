@@ -11,6 +11,7 @@ export class ChatHistoryComponent implements OnInit {
 	public msgs: Message[] = [];
 	public message: Message;
 	name: string;
+	oldname: string;
 
 	//Speicherfunktion
 	saveMessage(value: string) {
@@ -18,6 +19,10 @@ export class ChatHistoryComponent implements OnInit {
 		this.message.content = value;
 		this.message.timesent = this.getTimeStamp();
 		this.msgs.push(this.message);
+		if (this.msgs.length == 11) {
+			this.msgs.splice(0, 1);
+			console.log(this.msgs);
+		}
 	}
 	//ZeitStempel Funktion
 	getTimeStamp() {
@@ -29,5 +34,6 @@ export class ChatHistoryComponent implements OnInit {
 
 	ngOnInit() {
 		this.data.currentname.subscribe((name) => (this.name = name));
+		this.data.oldname.subscribe((oldname) => (this.oldname = oldname));
 	}
 }

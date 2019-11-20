@@ -4,7 +4,7 @@
 .history {
 	padding-top: 10px;
 	padding-bottom: 5px;
-	height: 257px;
+	height: 60vh;
 	display: block;
 	margin-right: 0;
 	background: #2eaded;
@@ -16,9 +16,6 @@ p {
 	word-break: break-word;
 	font-weight: bold;
 	opacity: 100%;
-}
-.container {
-	height: 240px;
 }
 
 .bubbles {

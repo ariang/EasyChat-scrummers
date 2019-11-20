@@ -8,12 +8,14 @@ import { UserService } from '../user.service';
 })
 export class NickNameComponent implements OnInit {
 	newname: string;
+	oldname: string;
 	changename: string;
 	name: string;
 	constructor(private data: UserService) {}
 
 	ngOnInit() {
 		this.data.currentname.subscribe((name) => (this.name = name));
+		this.data.oldname.subscribe((oldname) => (this.oldname = oldname));
 	}
 	//Set the new Name with RegEx
 	newName() {
@@ -29,6 +31,7 @@ export class NickNameComponent implements OnInit {
 			return false;
 		} else {
 			if (this.checkName(this.changename)) {
+				this.data.setOName(this.name);
 				this.data.setName(this.changename);
 				this.changename = null;
 			}
