@@ -25,6 +25,8 @@ export class NickNameComponent implements OnInit {
 		if (this.checkName(this.newname)) {
 			this.data.setName(this.newname);
 			this.data.setOName(this.newname);
+			this.namemessage = this.newname + ' hat den Chat betreten';
+			this.nameEvent.emit(this.namemessage);
 		} else {
 			this.newname = '';
 		}
