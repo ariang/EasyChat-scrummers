@@ -33,10 +33,18 @@
 		<div class="history col-lg-6 col-xl-6 col-xs-12 scrollable border rounded" #scrollMe
 			[scrollTop]="scrollMe.scrollHeight" id=textarea>
 
-			<p class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
+			<ng-container class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
 				<!---Name Message Content & Timesent-->
-				<font size=4.5><b>{{ name }}</b></font><br>{{msg.content}} <font size=0.5>{{ msg.timesent }}</font>
-			</p>
+				<div *ngIf="!msg.namechange; then thenBlock else elseBlock"></div>
+				<ng-template #thenBlock>
+					<p><b>{{ name }}</b><br>{{msg.content}} <font size=0.5>
+							{{ msg.timesent }}</font>
+					</p>
+				</ng-template>
+				<ng-template #elseBlock>
+					<p style="color:black; font-style: italic;">{{msg.content}}<p>
+				</ng-template>
+			</ng-container>
 
 		</div>
 

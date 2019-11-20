@@ -18,6 +18,10 @@ export class ChatHistoryComponent implements OnInit {
 		this.message = new Message();
 		this.message.content = value;
 		this.message.timesent = this.getTimeStamp();
+		if (this.message.content.includes('Name geändert von')) {
+			this.message.namechange = true;
+			console.log(this.message.namechange);
+		}
 		this.msgs.push(this.message);
 		if (this.msgs.length == 11) {
 			this.msgs.splice(0, 1);
