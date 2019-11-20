@@ -12,7 +12,7 @@
 }
 @media (min-height: 200.98px) {
 	.history {
-		height: 30vh;
+		height: 40vh;
 	}
 }
 @media (min-height: 575.98px) {
@@ -23,7 +23,7 @@
 
 @media (min-height: 767.98px) {
 	.history {
-		height: 69.5vh;
+		height: 68vh;
 	}
 }
 
