@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../user.service';
 
 @Component({
@@ -11,7 +11,10 @@ export class NickNameComponent implements OnInit {
 	oldname: string;
 	changename: string;
 	name: string;
+	namemessage: string;
 	constructor(private data: UserService) {}
+
+	@Output() nameEvent = new EventEmitter<string>();
 
 	ngOnInit() {
 		this.data.currentname.subscribe((name) => (this.name = name));
@@ -21,6 +24,7 @@ export class NickNameComponent implements OnInit {
 	newName() {
 		if (this.checkName(this.newname)) {
 			this.data.setName(this.newname);
+			this.data.setOName(this.newname);
 		} else {
 			this.newname = '';
 		}
@@ -33,6 +37,8 @@ export class NickNameComponent implements OnInit {
 			if (this.checkName(this.changename)) {
 				this.data.setOName(this.name);
 				this.data.setName(this.changename);
+				this.namemessage = 'Name geändert von ' + this.oldname + ' zu ' + this.name;
+				this.nameEvent.emit(this.namemessage);
 				this.changename = null;
 			}
 		}

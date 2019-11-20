@@ -4,12 +4,40 @@
 .history {
 	padding-top: 10px;
 	padding-bottom: 5px;
-	height: 60vh;
+	height: 45vh;
 	display: block;
 	margin-right: 0;
 	background: #2eaded;
 	opacity: 80%;
 }
+@media (min-height: 200.98px) {
+	.history {
+		height: 30vh;
+	}
+}
+@media (min-height: 575.98px) {
+	.history {
+		height: 57vh;
+	}
+}
+
+@media (min-height: 767.98px) {
+	.history {
+		height: 69.5vh;
+	}
+}
+
+@media (min-height: 991.98px) {
+	.history {
+		height: 76vh;
+	}
+}
+@media (min-height: 1199.98px) {
+	.history {
+		height: 79vh;
+	}
+}
+
 p {
 	margin: 0;
 	white-space: pre-wrap;
@@ -32,61 +60,53 @@ p {
 }
 
 .bubble-2 {
-	left: 350px;
+	left: 25vw;
 	animation: up 10s infinite;
 }
 
 .bubble-3 {
-	left: 750px;
+	left: 60vw;
 	opacity: .30;
 	animation: up 8s infinite;
 }
 
 .bubble-4 {
-	left: 1150px;
+	left: 65vw;
 	animation: up 13s infinite;
 }
 
 .bubble-5 {
-	left: 50px;
+	left: 5vw;
 	animation: up 11s infinite;
 }
 
 .bubble-6 {
-	left: 300px;
+	left: 30vw;
 	opacity: .30;
 	animation: up 9s infinite;
 }
 
 .bubble-7 {
-	left: 670px;
+	left: 70vw;
 	animation: up 19s infinite;
 }
 
 .bubble-8 {
-	left: 1050px;
+	left: 80vw;
 	opacity: .30;
 	animation: up 10s infinite;
 }
 .bubble-10 {
-	left: 300px;
+	left: 90vw;
 	animation: up 15s infinite;
-}
-
-/* Bubbles Animation */
-@keyframes up {
-	100% {
-		transform: translateY(-800px);
-	}
 }
 
 .fish {
 	width: 150px;
 	height: 100px;
-	animation: swim 10s infinite;
+	animation: swim 20s infinite;
 }
 
-/* Franklin */
 .fish-body {
 	position: relative;
 	margin-top: 30px;
@@ -132,20 +152,27 @@ p {
 	margin-top: -10px;
 	transform: rotate(-40deg);
 }
+
 @keyframes swim {
 	0% {
-		transform: translateY(-50px) translateX(0) rotate(30deg);
+		transform: translateY(-20vh) translateX(0) rotate(30deg);
 	}
 	25% {
-		transform: translateY(50px) translateX(250px) rotate(20deg);
+		transform: translateY(10vh) translateX(25vw) rotate(20deg);
 	}
 	50% {
-		transform: translateY(100px) translateX(500px);
+		transform: translateY(30vh) translateX(50vw);
 	}
 	75% {
-		transform: translateY(50px) translateX(850px) rotate(-20deg);
+		transform: translateY(50px) translateX(75vw) rotate(-20deg);
 	}
 	100% {
-		transform: translateY(-170px) translateX(1050px) rotate(-40deg);
+		transform: translateY(-170px) translateX(90vw) rotate(-40deg);
+	}
+}
+/* Bubbles Animation */
+@keyframes up {
+	100% {
+		transform: translateY(-90vh);
 	}
 }

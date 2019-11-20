@@ -1,49 +1,49 @@
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 </head>
 <div class="container-fluid">
 
-    <div class="row">
-        <!--Fish and bubbles-->
-        <div class="col-lg-3 col-xl-3 d-none d-lg-block d-xl-block">
-            <div class="bubbles bubble-1 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-5 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-2 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-6 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-3 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-7 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-4 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-8 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-10 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-12 d-none d-lg-block d-xl-block"></div>
+	<div class="row">
+		<!--Fish and bubbles-->
+		<div class="col-lg-3 col-xl-3 d-none d-lg-block d-xl-block">
+			<div class="bubbles bubble-1 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-5 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-2 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-6 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-3 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-7 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-4 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-8 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-10 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-12 d-none d-lg-block d-xl-block"></div>
 
-            <div class="fish d-none d-lg-block d-xl-block">
-                <div class="fish-body d-none d-lg-block d-xl-block">
-                    <div class="eye d-none d-lg-block d-xl-block">
-                        <div class="pupil d-none d-lg-block d-xl-block"></div>
-                    </div>
-                </div>
-                <div class="fin d-none d-lg-block d-xl-block"></div>
-                <div class="fin fin-bottom d-none d-lg-block d-xl-block"></div>
-            </div>
-        </div>
-
-
-        <!--Historybox-->
-        <div class="history col-lg-6 col-xl-6 col-xs-12 scrollable border rounded" #scrollMe
-            [scrollTop]="scrollMe.scrollHeight" id=textarea>
-
-            <p class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
-                <!---Name Message Content & Timesent-->
-                <b>{{ name }}</b><br>{{msg.content}} <font size=0.5>{{ msg.timesent }}</font>
-            </p>
-
-        </div>
-
-        <!--placeholder-->
-        <div class="col-lg-3 d-none d-lg-block d-xl-block"> </div>
+			<div class="fish d-none d-lg-block d-xl-block">
+				<div class="fish-body d-none d-lg-block d-xl-block">
+					<div class="eye d-none d-lg-block d-xl-block">
+						<div class="pupil d-none d-lg-block d-xl-block"></div>
+					</div>
+				</div>
+				<div class="fin d-none d-lg-block d-xl-block"></div>
+				<div class="fin fin-bottom d-none d-lg-block d-xl-block"></div>
+			</div>
+		</div>
 
 
-    </div>
+		<!--Historybox-->
+		<div class="history col-lg-6 col-xl-6 col-xs-12 scrollable border rounded" #scrollMe
+			[scrollTop]="scrollMe.scrollHeight" id=textarea>
+
+			<p class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
+				<!---Name Message Content & Timesent-->
+				<b>{{ name }}</b><br>{{msg.content}} <font size=0.5>{{ msg.timesent }}</font>
+			</p>
+
+		</div>
+
+		<!--placeholder-->
+		<div class="col-lg-3 d-none d-lg-block d-xl-block"> </div>
+
+
+	</div>
 
 </div>
