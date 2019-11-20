@@ -46,10 +46,14 @@ export class NickNameComponent implements OnInit {
 		}
 	}
 	checkName(value: string) {
-		if (value.match('^(?=.*[0-9A-Za-z])([\u00C0-\u017F.!@#$%^&*(),?":{}|<>A-Za-z0-9_-]+)$')) {
+		if (value.match('^(?=.*[0-9A-Za-z\u00C0-\u017F])([\u00C0-\u017F.!@#$%^&*(),?":{}|<>A-Za-z0-9_-]+)$')) {
 			return true;
 		} else {
-			alert('Username darf nicht nur Sonderzeichen enthalten');
+			if (value.includes(' ')) {
+				alert('Username darf keine Leerzeichen enthalten');
+			} else {
+				alert('Username muss entweder einen Buchstaben oder eine Zahl enthalten');
+			}
 		}
 	}
 }
