@@ -14,21 +14,17 @@ export class ChatHistoryComponent implements OnInit {
 	oldname: string;
 
 	//Speicherfunktion
-	saveMessage(value: string) {
+	saveMessage(value: string, changed: boolean) {
 		this.message = new Message();
 		this.message.name = this.name;
 		this.message.content = value;
 		this.message.timesent = this.getTimeStamp();
-		if (
-			this.message.content.includes('Name geändert von') ||
-			this.message.content.includes('hat den Chat betreten')
-		) {
+		console.log(changed);
+		if (changed) {
 			this.message.namechange = true;
 			this.message.firstmessage = false;
 			console.log(this.message.namechange);
 		} else {
-			this.message.namechange = false;
-
 			if (
 				this.msgs[this.msgs.length - 1].name !== null &&
 				this.msgs[this.msgs.length - 1].name == this.name &&

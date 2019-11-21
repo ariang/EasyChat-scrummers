@@ -12,6 +12,9 @@ export class AppComponent {
 	private chatHistory: ChatHistoryComponent;
 
 	public recieveMessage($event) {
-		this.chatHistory.saveMessage($event);
+		this.chatHistory.saveMessage($event, false);
+	}
+	public firstName($event) {
+		this.chatHistory.saveMessage($event, true);
 	}
 }
