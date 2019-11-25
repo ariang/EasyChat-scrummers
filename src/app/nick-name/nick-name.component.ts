@@ -36,7 +36,6 @@ export class NickNameComponent implements OnInit {
 			alert('Es darf nicht der gleiche Nickname sein');
 			return false;
 		} else {
-			console.log('joooooo');
 			if (this.checkName(this.changename)) {
 				this.data.setOName(this.name);
 				this.data.setName(this.changename);

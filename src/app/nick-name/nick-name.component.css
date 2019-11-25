@@ -2,7 +2,9 @@
 .font-weight-light {
 	padding-top: 10px;
 }
-
+.currentname {
+	padding-left: 10px;
+}
 ::placeholder {
 	color: red;
 }
@@ -10,8 +12,9 @@
 #change {
 	float: right;
 	margin-top: 10px;
+	margin-right: 10px;
 }
 .nickname {
-	padding-left: 0;
-	padding-right: 0;
+	padding-left: 1px;
+	padding-right: 1px;
 }

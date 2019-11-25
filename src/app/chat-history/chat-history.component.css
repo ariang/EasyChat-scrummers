@@ -3,6 +3,7 @@
 }
 .history {
 	padding-top: 10px;
+
 	padding-bottom: 5px;
 	height: 45vh;
 	display: block;
@@ -10,6 +11,29 @@
 	background: #2eaded;
 	opacity: 80%;
 }
+#style-7::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: #2eaded;
+	border-radius: 10px;
+}
+
+#style-7::-webkit-scrollbar {
+	width: 10px;
+	background-color: #2eaded;
+}
+
+#style-7::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.44, rgb(122, 153, 217)),
+		color-stop(0.72, rgb(73, 125, 189)),
+		color-stop(0.86, rgb(28, 58, 148))
+	);
+}
+
 @media (min-height: 200.98px) {
 	.history {
 		height: 40vh;
@@ -166,7 +190,7 @@ p {
 		transform: translateY(50px) translateX(75vw) rotate(-20deg);
 	}
 	100% {
-		transform: translateY(-170px) translateX(90vw) rotate(-40deg);
+		transform: translateY(-170px) translateX(80vw) rotate(-40deg);
 	}
 }
 /* Bubbles Animation */

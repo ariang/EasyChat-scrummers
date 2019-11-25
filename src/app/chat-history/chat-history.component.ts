@@ -19,11 +19,9 @@ export class ChatHistoryComponent implements OnInit {
 		this.message.name = this.name;
 		this.message.content = value;
 		this.message.timesent = this.getTimeStamp();
-		console.log(changed);
 		if (changed) {
 			this.message.namechange = true;
 			this.message.firstmessage = false;
-			console.log(this.message.namechange);
 		} else {
 			if (
 				this.msgs[this.msgs.length - 1].name !== null &&
