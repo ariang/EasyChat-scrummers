@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,7 +20,7 @@ import { NickNameComponent } from './nick-name/nick-name.component';
 		ChatHistoryComponent,
 		NickNameComponent
 	],
-	imports: [ BrowserModule, FormsModule, BrowserAnimationsModule ],
+	imports: [ BrowserModule, FormsModule, BrowserAnimationsModule, HttpClientModule ],
 	providers: [],
 	bootstrap: [ AppComponent ]
 })
