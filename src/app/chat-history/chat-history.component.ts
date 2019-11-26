@@ -46,7 +46,7 @@ export class ChatHistoryComponent implements OnInit {
 		this.cService.getHistory().subscribe((response: Message[]) => {
 			this.msgs = response;
 			if (this.msgs.length > 11) {
-				this.msgs.splice(0, this.msgs.length - 10);
+				this.msgs.splice(0, this.msgs.length - 2000);
 			}
 		});
 	}, 10);
