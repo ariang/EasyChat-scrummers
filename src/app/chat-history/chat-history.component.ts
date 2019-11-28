@@ -40,16 +40,20 @@ export class ChatHistoryComponent implements OnInit {
 		this.cService.addToHistory(this.message).subscribe((response: Message) => {
 			console.log('REST' + response);
 		});
+		if (this.msgs.length > 11) {
+			this.msgs.splice(0, this.msgs.length - 2000);
+		}
 	}
 
 	x = setInterval(() => {
 		this.cService.getHistory().subscribe((response: Message[]) => {
 			this.msgs = response;
+			console.log(this.msgs.length);
 			if (this.msgs.length > 11) {
-				this.msgs.splice(0, this.msgs.length - 2000);
+				this.msgs.splice(0, this.msgs.length - 10);
 			}
 		});
-	}, 10);
+	}, 2000);
 	//ZeitStempel Funktion
 	getTimeStamp() {
 		var now = new Date();
@@ -59,11 +63,5 @@ export class ChatHistoryComponent implements OnInit {
 	ngOnInit() {
 		this.data.currentname.subscribe((name) => (this.name = name));
 		this.data.oldname.subscribe((oldname) => (this.oldname = oldname));
-		this.cService.getHistory().subscribe((response: Message[]) => {
-			this.msgs = response;
-			if (this.msgs.length > 11) {
-				this.msgs.splice(0, this.msgs.length - 10);
-			}
-		});
 	}
 }
