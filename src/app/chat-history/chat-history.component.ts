@@ -37,9 +37,7 @@ export class ChatHistoryComponent implements OnInit {
 				this.message.firstmessage = false;
 			}
 		}
-		this.cService.addToHistory(this.message).subscribe((response: Message) => {
-			console.log('REST' + response);
-		});
+		this.cService.addToHistory(this.message).subscribe((response: Message) => {});
 		if (this.msgs.length > 11) {
 			this.msgs.splice(0, this.msgs.length - 2000);
 		}
@@ -48,7 +46,6 @@ export class ChatHistoryComponent implements OnInit {
 	x = setInterval(() => {
 		this.cService.getHistory().subscribe((response: Message[]) => {
 			this.msgs = response;
-			console.log(this.msgs.length);
 			if (this.msgs.length > 11) {
 				this.msgs.splice(0, this.msgs.length - 10);
 			}
