@@ -1,64 +1,72 @@
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 </head>
 <div class="container-fluid">
 
-    <div class="row">
-        <!--Fish and bubbles-->
-        <div class="col-lg-3 col-xl-3 d-none d-lg-block d-xl-block">
-            <div class="bubbles bubble-1 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-5 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-2 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-6 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-3 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-7 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-4 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-8 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-10 d-none d-lg-block d-xl-block"></div>
-            <div class="bubbles bubble-12 d-none d-lg-block d-xl-block"></div>
+	<div class="row">
+		<!--Fish and bubbles-->
+		<div class="col-lg-3 col-xl-3 d-none d-lg-block d-xl-block">
+			<div class="bubbles bubble-1 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-5 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-2 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-6 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-3 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-7 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-4 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-8 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-10 d-none d-lg-block d-xl-block"></div>
+			<div class="bubbles bubble-12 d-none d-lg-block d-xl-block"></div>
 
-            <div class="fish d-none d-lg-block d-xl-block">
-                <div class="fish-body d-none d-lg-block d-xl-block">
-                    <div class="eye d-none d-lg-block d-xl-block">
-                        <div class="pupil d-none d-lg-block d-xl-block"></div>
-                    </div>
-                </div>
-                <div class="fin d-none d-lg-block d-xl-block"></div>
-                <div class="fin fin-bottom d-none d-lg-block d-xl-block"></div>
-            </div>
-        </div>
-
-
-        <!--Historybox-->
-        <div class="history col-lg-6 col-xl-6 col-xs-12 scrollable border rounded" id="style-7">
-
-            <ng-container class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
-                <!---Name Message Content & Timesent-->
-                <div *ngIf="!msg.namechange; then thenBlock else elseBlock"></div>
-                <ng-template #thenBlock>
-                    <div *ngIf="msg.firstmessage; then thenBlock else elseBlock"></div>
-                    <ng-template #thenBlock>
-                        <p><b>{{ msg.name }}</b><br>{{msg.content}} <font size=0.5>
-                                {{ msg.timesent }}</font>
-                        </p>
-                    </ng-template>
-                    <ng-template #elseBlock>
-                        <p>{{msg.content}} <font size=0.5>
-                                {{ msg.timesent }}</font>
-                        </p>
-                    </ng-template>
-                </ng-template>
-                <ng-template #elseBlock>
-                    <p style="color:black; font-style: italic;">{{msg.content}}<p>
-                </ng-template>
-            </ng-container>
-
-        </div>
-
-        <!--placeholder-->
-        <div class="col-lg-3 d-none d-lg-block d-xl-block"> </div>
+			<div class="fish d-none d-lg-block d-xl-block">
+				<div class="fish-body d-none d-lg-block d-xl-block">
+					<div class="eye d-none d-lg-block d-xl-block">
+						<div class="pupil d-none d-lg-block d-xl-block"></div>
+					</div>
+				</div>
+				<div class="fin d-none d-lg-block d-xl-block"></div>
+				<div class="fin fin-bottom d-none d-lg-block d-xl-block"></div>
+			</div>
+		</div>
 
 
-    </div>
+		<!--Historybox-->
+		<!--Bei Scroll wird onScroll ausgeführt, somit scrollt es nicht direkt nach ganz unten-->
+		<div class="history col-lg-6 col-xl-6 col-xs-12 scrollable border rounded" #scrollMe (scroll)="onScroll()"
+			id="style-7">
+			<!--Iterierung durch Message Array-->
+			<ng-container class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
+				<!---Prüfung ob Name nicht geändert wurde-->
+				<div *ngIf="!msg.namechange; then thenBlock else elseBlock"></div>
+				<ng-template #thenBlock>
+					<!--Falls selber Name prüfen ob es die erste Message ist-->
+					<div *ngIf="msg.firstmessage; then thenBlock else elseBlock"></div>
+					<!--Name: Content Zeit  darstellen-->
+					<ng-template #thenBlock>
+						<p><b>{{ msg.name }}</b><br>{{msg.content}} <font size=0.5>
+								{{ msg.timesent }}</font>
+						</p>
+					</ng-template>
+					<!--Wenn es nicht erste Nachricht ist-->
+					<ng-template #elseBlock>
+						<!--Content Zeit  darstellen-->
+						<p>{{msg.content}} <font size=0.5>
+								{{ msg.timesent }}</font>
+						</p>
+					</ng-template>
+				</ng-template>
+				<!---Bei Namensänderung folgendes anzeigen-->
+				<ng-template #elseBlock>
+					<!--Schwarz und Kursiv die Nachricht anzeigen-->
+					<p style="color:black; font-style: italic;">{{msg.content}}<p>
+				</ng-template>
+			</ng-container>
+
+		</div>
+
+		<!--placeholder-->
+		<div class="col-lg-3 d-none d-lg-block d-xl-block"> </div>
+
+
+	</div>
 
 </div>
