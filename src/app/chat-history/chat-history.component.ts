@@ -6,11 +6,12 @@ import { ChatService } from '../chat.service';
 @Component({
 	selector: 'app-chat-history',
 	templateUrl: './chat-history.component.html',
-	styleUrls: ['./chat-history.component.css']
+	styleUrls: [ './chat-history.component.css' ]
 })
 export class ChatHistoryComponent implements OnInit {
-	constructor(private data: UserService, private cService: ChatService) { }
-	@ViewChild('scrollMe', { static: false }) private myScrollContainer: ElementRef;
+	constructor(private data: UserService, private cService: ChatService) {}
+	@ViewChild('scrollMe', { static: false })
+	private myScrollContainer: ElementRef;
 
 	public msgs: Message[] = [];
 	public message: Message;
@@ -27,11 +28,11 @@ export class ChatHistoryComponent implements OnInit {
 
 		if (changed) {
 			this.message.namechange = true;
-			this.message.firstmessage = false;//Namensänderung Nachricht wird gesendet
+			this.message.firstmessage = false; //Namensänderung Nachricht wird gesendet
 		} else {
 			if (
-				this.msgs[this.msgs.length - 1].name !== null && //ist der letzte gespeicherte name nicht leer?
-				this.msgs[this.msgs.length - 1].name !== this.name || //ist der name der nicht gleiche wie der jetztige name?
+				(this.msgs[this.msgs.length - 1].name !== null && //ist der letzte gespeicherte name nicht leer?
+					this.msgs[this.msgs.length - 1].name !== this.name) || //ist der name der nicht gleiche wie der jetztige name?
 				this.msgs[this.msgs.length - 1].namechange // oder ist die vorherige Nachricht über eine namensänderung?
 			) {
 				this.message.firstmessage = true; //Name wird angezeigt
@@ -39,7 +40,7 @@ export class ChatHistoryComponent implements OnInit {
 				this.message.firstmessage = false; //sonst nur Nachricht und Zeit
 			}
 		}
-		this.cService.addToHistory(this.message).subscribe((response: Message) => { });
+		this.cService.addToHistory(this.message).subscribe((response: Message) => {});
 		//Zuerst wird geprüft ob Message Array grässer als 11 ist
 		if (this.msgs.length > 11) {
 			//Von ersten bis zur zehntletzten nachricht werden alle gelöscht aus dem Array
@@ -71,23 +72,22 @@ export class ChatHistoryComponent implements OnInit {
 		this.scrollToBottom();
 	}
 	//Wenn gescrollt wird wird disable scrolldown auf true gesetzt damit es nicht immer runter springt
-	private onScroll() {
-		let element = this.myScrollContainer.nativeElement
-		let atBottom = element.scrollHeight - element.scrollTop === element.clientHeight
+	public onScroll() {
+		let element = this.myScrollContainer.nativeElement;
+		let atBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
 		if (this.disableScrollDown && atBottom) {
-			this.disableScrollDown = false
+			this.disableScrollDown = false;
 		} else {
-			this.disableScrollDown = true
+			this.disableScrollDown = true;
 		}
 	}
 	//wenn nicht gescrollt wurde geht es nach ganz unten
-	private scrollToBottom(): void {
+	public scrollToBottom(): void {
 		if (this.disableScrollDown) {
-			return
+			return;
 		}
 		try {
 			this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-		} catch (err) { }
+		} catch (err) {}
 	}
-
 }
