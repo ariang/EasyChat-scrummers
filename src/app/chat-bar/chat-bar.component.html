@@ -1,20 +1,21 @@
 <div class="container-fluid">
-    <div class="row">
-        <!--placeholder-->
-        <div class="col-lg-3"></div>
+	<div class="row">
+		<!--placeholder-->
+		<div class="col-lg-3"></div>
 
-        <!--Chatbox disabled while no Username-->
-        <div class="input-group col-lg-6 col-sm-12">
-            <textarea type="text" rows="1" class="form-control" [disabled]="!name" [(ngModel)]="chatmessage"
-                (keyup.enter)="sendMessage()" maxlength="1000"></textarea>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" id="submitbtn" [hidden]="!chatmessage"
-                    (click)="sendMessage()">send</button>
-            </div>
-        </div>
+		<!--Chatbox disabled while no Username-->
+		<div class="input-group col-lg-6 col-sm-12">
+			<!--mit min height wird minimum der Höhe gesetzt um eine sichtbare Nachricht zu haben-->
+			<textarea style="min-height:40px;" type="text" rows="1" class="form-control" [disabled]="!name"
+				[(ngModel)]="chatmessage" (keyup.enter)="sendMessage()" maxlength="1000"></textarea>
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" id="submitbtn" [hidden]="!chatmessage"
+					(click)="sendMessage()">send</button>
+			</div>
+		</div>
 
-        <!--placeholder-->
-        <div class="col-lg-3"></div>
+		<!--placeholder-->
+		<div class="col-lg-3"></div>
 
-    </div>
+	</div>
 </div>

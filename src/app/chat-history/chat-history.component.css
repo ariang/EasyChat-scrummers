@@ -178,7 +178,7 @@ p {
 
 @keyframes swim {
 	0% {
-		transform: translateY(-20vh) translateX(0) rotate(30deg);
+		transform: translateY(-20vh) translateX(-25vw) rotate(30deg);
 	}
 	25% {
 		transform: translateY(10vh) translateX(25vw) rotate(20deg);
