@@ -49,13 +49,19 @@ export class ChatHistoryComponent implements OnInit {
 	}
 
 	x = setInterval(() => {
-		this.cService.getHistory().subscribe((response: Message[]) => {
-			this.msgs = response;
-			if (this.msgs.length > 11) {
-				this.msgs.splice(0, this.msgs.length - 10);
+		this.cService.getChanges().subscribe((response: Boolean) => {
+			if (response) {
+				console.log(response);
+				this.cService.getHistory().subscribe((response: Message[]) => {
+					this.msgs = response;
+					if (this.msgs.length > 11) {
+						this.msgs.splice(0, this.msgs.length - 10);
+					}
+				});
 			}
 		});
 	}, 2000);
+
 	//ZeitStempel Funktion
 	getTimeStamp() {
 		var now = new Date();
