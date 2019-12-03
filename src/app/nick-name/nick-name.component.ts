@@ -12,6 +12,7 @@ export class NickNameComponent implements OnInit {
 	changename: string;
 	name: string;
 	namemessage: string;
+	color: string;
 	constructor(private data: UserService) {}
 
 	@Output() nameEvent = new EventEmitter<string>();
@@ -19,12 +20,14 @@ export class NickNameComponent implements OnInit {
 	ngOnInit() {
 		this.data.currentname.subscribe((name) => (this.name = name));
 		this.data.oldname.subscribe((oldname) => (this.oldname = oldname));
+		this.data.newcolor.subscribe((color) => (this.color = color));
 	}
 	//Set the new Name with RegEx
 	newName() {
 		if (this.checkName(this.newname)) {
 			this.data.setName(this.newname);
 			this.data.setOName(this.newname);
+			this.data.setColor(this.getRandomColor());
 			this.namemessage = this.newname + ' hat den Chat betreten';
 			this.nameEvent.emit(this.namemessage);
 		} else {
@@ -55,5 +58,13 @@ export class NickNameComponent implements OnInit {
 				alert('Username muss entweder einen Buchstaben oder eine Zahl enthalten');
 			}
 		}
+	}
+	getRandomColor() {
+		var letters = '0123456789ABCDEF';
+		var color = '#';
+		for (var i = 0; i < 6; i++) {
+			color += letters[Math.floor(Math.random() * 16)];
+		}
+		return color;
 	}
 }

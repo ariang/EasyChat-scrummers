@@ -11,6 +11,8 @@ export class UserService {
 	currentname = this.name.asObservable();
 	private oname = new BehaviorSubject('');
 	oldname = this.oname.asObservable();
+	private color = new BehaviorSubject('');
+	newcolor = this.color.asObservable();
 
 	constructor() {}
 	//function to set Name
@@ -19,5 +21,8 @@ export class UserService {
 	}
 	setOName(value: string) {
 		this.oname.next(value);
+	}
+	setColor(value: string) {
+		this.color.next(value);
 	}
 }

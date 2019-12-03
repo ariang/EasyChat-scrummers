@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild }
 import { Message } from '../message';
 import { UserService } from '../user.service';
 import { ChatService } from '../chat.service';
+import { compilePipeFromRender2 } from '@angular/compiler/src/render3/r3_pipe_compiler';
 
 @Component({
 	selector: 'app-chat-history',
@@ -18,6 +19,7 @@ export class ChatHistoryComponent implements OnInit {
 	name: string;
 	oldname: string;
 	disableScrollDown = false;
+	color: string;
 
 	//Sendefunktion der Nachricht
 	saveMessage(value: string, changed: boolean) {
@@ -25,7 +27,7 @@ export class ChatHistoryComponent implements OnInit {
 		this.message.name = this.name;
 		this.message.content = value;
 		this.message.timesent = this.getTimeStamp();
-
+		this.message.color = this.color;
 		if (changed) {
 			this.message.namechange = true;
 			this.message.firstmessage = false; //Namensänderung Nachricht wird gesendet
@@ -72,6 +74,13 @@ export class ChatHistoryComponent implements OnInit {
 	ngOnInit() {
 		this.data.currentname.subscribe((name) => (this.name = name));
 		this.data.oldname.subscribe((oldname) => (this.oldname = oldname));
+		this.data.newcolor.subscribe((color) => (this.color = color));
+		this.cService.getHistory().subscribe((response: Message[]) => {
+			this.msgs = response;
+			if (this.msgs.length > 11) {
+				this.msgs.splice(0, this.msgs.length - 10);
+			}
+		});
 	}
 	//Scrolling Funktionen
 	ngAfterViewChecked() {

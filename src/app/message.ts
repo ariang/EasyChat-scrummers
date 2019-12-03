@@ -4,4 +4,5 @@ export class Message {
 	timesent: string;
 	firstmessage: boolean;
 	namechange: boolean;
+	color: string;
 }

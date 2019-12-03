@@ -42,7 +42,8 @@
 					<div *ngIf="msg.firstmessage; then thenBlock else elseBlock"></div>
 					<!--Name: Content Zeit  darstellen-->
 					<ng-template #thenBlock>
-						<p><b>{{ msg.name }}</b><br>{{msg.content}} <font size=0.5>
+						<p><b [ngStyle]="{'color': msg.color}">{{ msg.name }}</b><br>{{msg.content}}
+							<font size=0.5>
 								{{ msg.timesent }}</font>
 						</p>
 					</ng-template>
@@ -57,7 +58,7 @@
 				<!---Bei Namensänderung folgendes anzeigen-->
 				<ng-template #elseBlock>
 					<!--Schwarz und Kursiv die Nachricht anzeigen-->
-					<p style="color:black; font-style: italic;">{{msg.content}}<p>
+					<p style="color:black; font-style: italic; text-align: center">{{msg.content}}<p>
 				</ng-template>
 			</ng-container>
 
