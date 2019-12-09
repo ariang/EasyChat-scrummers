@@ -7,10 +7,10 @@ import { compilePipeFromRender2 } from '@angular/compiler/src/render3/r3_pipe_co
 @Component({
 	selector: 'app-chat-history',
 	templateUrl: './chat-history.component.html',
-	styleUrls: [ './chat-history.component.css' ]
+	styleUrls: ['./chat-history.component.css']
 })
 export class ChatHistoryComponent implements OnInit {
-	constructor(private data: UserService, private cService: ChatService) {}
+	constructor(private data: UserService, private cService: ChatService) { }
 	@ViewChild('scrollMe', { static: false })
 	private myScrollContainer: ElementRef;
 
@@ -42,7 +42,7 @@ export class ChatHistoryComponent implements OnInit {
 				this.message.firstmessage = false; //sonst nur Nachricht und Zeit
 			}
 		}
-		this.cService.addToHistory(this.message).subscribe((response: Message) => {});
+		this.cService.addToHistory(this.message).subscribe((response: Message) => { });
 		//Zuerst wird geprüft ob Message Array grässer als 11 ist
 		if (this.msgs.length > 11) {
 			//Von ersten bis zur zehntletzten nachricht werden alle gelöscht aus dem Array
@@ -121,8 +121,8 @@ export class ChatHistoryComponent implements OnInit {
 		try {
 			setTimeout(() => {
 				this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-			}, 200);
-		} catch (err) {}
+			}, 500);
+		} catch (err) { }
 	}
 }
 var monthNames = [
