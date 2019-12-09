@@ -64,11 +64,11 @@ export class NickNameComponent implements OnInit {
 		var lettersblue = '01234';
 		var color = '#';
 		//Rot und Grün können normal gesetzt werden
-		for (var i = 0; i < 4; i++) {
+		for (var i = 0; i < 2; i++) {
 			color += letters[Math.floor(Math.random() * 16)];
 		}
 		//Zur erreichung eines leserlichen Namens wird Blau gecappt
-		for (var i = 0; i < 2; i++) {
+		for (var i = 0; i < 4; i++) {
 			color += lettersblue[Math.floor(Math.random() * 5)];
 		}
 		console.log(color);

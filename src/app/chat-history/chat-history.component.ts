@@ -66,8 +66,8 @@ export class ChatHistoryComponent implements OnInit {
 			if (this.msgs.length > 11) {
 				this.msgs.splice(0, this.msgs.length - 10);
 			}
+			this.scrollToBottom();
 		});
-		this.scrollToBottom();
 	}
 	//ZeitStempel Funktion
 	getTimeStamp() {
