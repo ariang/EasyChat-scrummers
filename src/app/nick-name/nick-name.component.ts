@@ -61,7 +61,7 @@ export class NickNameComponent implements OnInit {
 	}
 	getRandomColor() {
 		var letters = '0123456789ABCDEF';
-		var lettersblue = '0123456789';
+		var lettersblue = '01234';
 		var color = '#';
 		//Rot und Grün können normal gesetzt werden
 		for (var i = 0; i < 4; i++) {
@@ -69,8 +69,9 @@ export class NickNameComponent implements OnInit {
 		}
 		//Zur erreichung eines leserlichen Namens wird Blau gecappt
 		for (var i = 0; i < 2; i++) {
-			color += lettersblue[Math.floor(Math.random() * 16)];
+			color += lettersblue[Math.floor(Math.random() * 5)];
 		}
+		console.log(color);
 		return color;
 	}
 }
