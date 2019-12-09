@@ -31,8 +31,8 @@
 
 		<!--Historybox-->
 		<!--Bei Scroll wird onScroll ausgeführt, somit scrollt es nicht direkt nach ganz unten-->
-		<div class="history col-lg-6 col-xl-6 col-xs-12 scrollable border rounded" #scrollMe (scroll)="onScroll()"
-			id="style-7">
+		<div class="d-inline-flex flex-column history col-lg-6 col-xl-6 col-xs-12 scrollable border rounded" #scrollMe
+			(scroll)="onScroll()" id="style-7">
 			<!--Iterierung durch Message Array-->
 			<ng-container class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
 				<!---Prüfung ob Name nicht geändert wurde-->
@@ -42,24 +42,40 @@
 					<div *ngIf="msg.firstmessage; then thenBlock else elseBlock"></div>
 					<!--Name: Content Zeit  darstellen-->
 					<ng-template #thenBlock>
-						<p><b [ngStyle]="{'color': msg.color}">{{ msg.name }}</b><br>{{msg.content}}
-							<font size=0.5>
-								{{ msg.timesent }}</font>
-						</p>
+
+						<div class="d-inline-flex"
+							[ngStyle]="{'flex-direction': msg.name==name  ? 'row-reverse' : 'row'}">
+							<p class="pb-1 pt-1 pl-3 pr-3 rounded grey">
+								<b [ngStyle]=" {'color': msg.color}">{{ msg.name }}</b><br>{{msg.content}}
+								<font size=0.5>
+									{{ msg.timesent }}</font>
+							</p>
+
+						</div>
 					</ng-template>
 					<!--Wenn es nicht erste Nachricht ist-->
 					<ng-template #elseBlock>
 						<!--Content Zeit  darstellen-->
-						<p>{{msg.content}} <font size=0.5>
-								{{ msg.timesent }}</font>
-						</p>
+						<div class="d-inline-flex pt-1"
+							[ngStyle]="{'flex-direction': msg.name==name  ? 'row-reverse' : 'row'}">
+							<p class="pb-1 pt-1 pl-3 pr-3 rounded grey">{{msg.content}} <font size=0.5>
+									{{ msg.timesent }}</font>
+							</p>
+						</div>
 					</ng-template>
 				</ng-template>
 				<!---Bei Namensänderung folgendes anzeigen-->
+
 				<ng-template #elseBlock>
-					<!--Schwarz und Kursiv die Nachricht anzeigen-->
-					<p style="color:black; font-style: italic; text-align: center">{{msg.content}}<p>
+					<span class="d-flex flex-row justify-content-center" style="font-size:small">
+						<!--Schwarz und Kursiv die Nachricht anzeigen-->
+						<p class="rounded m-1 notification pl-2 pr-2" style="text-align:center; color:black; ">
+							<span [ngStyle]=" {'color': msg.color, 'font-weight': '700'}">{{msg.name}}</span>
+							{{msg.content}}
+							<p>
+					</span>
 				</ng-template>
+
 			</ng-container>
 
 		</div>

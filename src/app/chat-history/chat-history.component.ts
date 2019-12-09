@@ -20,7 +20,7 @@ export class ChatHistoryComponent implements OnInit {
 	oldname: string;
 	disableScrollDown = false;
 	color: string;
-
+	msgcount = 0;
 	//Sendefunktion der Nachricht
 	saveMessage(value: string, changed: boolean) {
 		this.message = new Message();
@@ -48,27 +48,46 @@ export class ChatHistoryComponent implements OnInit {
 			//Von ersten bis zur zehntletzten nachricht werden alle gelöscht aus dem Array
 			this.msgs.splice(0, this.msgs.length - 10);
 		}
+		this.msgcount = this.msgcount++;
+		console.log(this.msgs);
 	}
 
 	x = setInterval(() => {
-		this.cService.getChanges().subscribe((response: Boolean) => {
-			if (response) {
+		this.cService.getChanges().subscribe((response: Number) => {
+			console.log('hallo' + response);
+			if (this.msgcount !== response) {
 				console.log(response);
-				this.cService.getHistory().subscribe((response: Message[]) => {
-					this.msgs = response;
-					if (this.msgs.length > 11) {
-						this.msgs.splice(0, this.msgs.length - 10);
-					}
-				});
+				this.refresh();
 			}
 		});
-	}, 2000);
+	}, 1000);
 
+	refresh() {
+		this.cService.getHistory().subscribe((response: Message[]) => {
+			this.msgs = response;
+			if (this.msgs.length > 11) {
+				this.msgs.splice(0, this.msgs.length - 10);
+			}
+		});
+		this.scrollToBottom();
+	}
 	//ZeitStempel Funktion
 	getTimeStamp() {
 		var now = new Date();
-		//falls weniger als 10 Minuten wird manuell ein 0 vorangestellt Bsp. 12:06 Uhr
-		return now.getHours() + ':' + (now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes());
+		var time;
+		time =
+			now.getDay() +
+			'. ' +
+			monthNames[now.getMonth()] +
+			' ' +
+			now.getFullYear() +
+			', ' +
+			now.getHours() +
+			':' +
+			(now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes()) +
+			' Uhr';
+
+		return time;
 	}
 
 	ngOnInit() {
@@ -106,3 +125,17 @@ export class ChatHistoryComponent implements OnInit {
 		} catch (err) {}
 	}
 }
+var monthNames = [
+	'Januar',
+	'Februar',
+	'März',
+	'April',
+	'Mai',
+	'Juni',
+	'Juli',
+	'August',
+	'September',
+	'Oktober',
+	'November',
+	'Dezember'
+];

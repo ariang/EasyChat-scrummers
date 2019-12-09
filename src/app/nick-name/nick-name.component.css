@@ -1,20 +1,19 @@
-.input-group,
-.font-weight-light {
-	padding-top: 10px;
-}
 .currentname {
 	padding-left: 10px;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 ::placeholder {
 	color: red;
 }
 
 #change {
-	float: right;
-	margin-top: 10px;
-	margin-right: 10px;
+	margin-right: 3px;
 }
 .nickname {
 	padding-left: 1px;
 	padding-right: 1px;
+}
+.grey {
+	background-color: rgba(248, 249, 250, 0.5);
 }
