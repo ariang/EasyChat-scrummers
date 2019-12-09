@@ -4,7 +4,7 @@
         <div class="col-3"></div>
 
         <!--Username Input-->
-        <div class="nickname col-lg-6 col-sm-12 mt-2">
+        <div class="nickname col-lg-6 col-sm-12 mt-1 mb-1">
             <div class="input-group" [hidden]="name">
                 <input type="text" class="form-control rounded" [(ngModel)]="newname" (keyup.enter)="newName()"
                     placeholder="Setze den Nickname um loszuchatten" maxlength="12" />
@@ -14,14 +14,14 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center mb-1 mt-1">
-                <div class="grey rounded pl-2 pr-3" style="font-size: large; color:black">
+            <div class="d-flex justify-content-between align-items-center" [hidden]="!name">
+                <div class="grey rounded pl-2 pr-3 shadow" style="font-size: large; color:black">
                     <p class="float-left currentname" [hidden]="!name">Dein
                         Nickname: <span [ngStyle]="{'color': color, 'font-weight': 700 }">{{name}}</span></p>
 
                 </div>
                 <div>
-                    <button type="button" [hidden]="!name" class=" rounded-pill btn btn-light btn-sm" id="change"
+                    <button type="button" [hidden]="!name" class="shadow rounded-pill btn btn-light btn-sm" id="change"
                         data-toggle="modal" data-target="#exampleModal">
                         Nickname ändern
                     </button>

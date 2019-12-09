@@ -66,7 +66,6 @@ export class ChatHistoryComponent implements OnInit {
 			if (this.msgs.length > 11) {
 				this.msgs.splice(0, this.msgs.length - 10);
 			}
-			this.scrollToBottom();
 		});
 	}
 	//ZeitStempel Funktion
@@ -120,7 +119,9 @@ export class ChatHistoryComponent implements OnInit {
 			return;
 		}
 		try {
-			this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+			setTimeout(() => {
+				this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+			}, 200);
 		} catch (err) {}
 	}
 }

@@ -13,6 +13,7 @@ export class ChatService {
 		const options = {
 			headers: new HttpHeaders().set('Content-Type', 'application/json')
 		};
+
 		const actionUrl = 'https://arianchat.herokuapp.com/api/history';
 		return this.http.post<Message>(actionUrl, message, options);
 	}
