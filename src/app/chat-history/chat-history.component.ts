@@ -49,15 +49,13 @@ export class ChatHistoryComponent implements OnInit {
 			this.msgs.splice(0, this.msgs.length - 10);
 		}
 		this.msgcount = this.msgcount++;
-		console.log(this.msgs);
 	}
 
 	x = setInterval(() => {
-		this.cService.getChanges().subscribe((response: Number) => {
-			console.log('hallo' + response);
-			if (this.msgcount !== response) {
-				console.log(response);
+		this.cService.getChanges().subscribe((response: JSON) => {
+			if (this.msgcount !== response[0].c) {
 				this.refresh();
+				this.msgcount = response[0].c;
 			}
 		});
 	}, 1000);
@@ -75,6 +73,7 @@ export class ChatHistoryComponent implements OnInit {
 	getTimeStamp() {
 		var now = new Date();
 		var time;
+		console.log(now.getDay);
 		time =
 			now.getDay() +
 			'. ' +
