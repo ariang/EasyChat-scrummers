@@ -73,18 +73,18 @@ export class ChatHistoryComponent implements OnInit {
 	getTimeStamp() {
 		var now = new Date();
 		var time;
-		console.log(now.getDay);
+		console.log(now.getDate());
 		time =
-			now.getDay() +
-			'. ' +
+			now.getDate() +
+			'.\xa0' +
 			monthNames[now.getMonth()] +
-			' ' +
+			'\xa0' +
 			now.getFullYear() +
-			', ' +
+			'\xa0' +
 			now.getHours() +
 			':' +
 			(now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes()) +
-			' Uhr';
+			'\xa0Uhr';
 
 		return time;
 	}
