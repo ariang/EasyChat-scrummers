@@ -31,8 +31,8 @@
 
 		<!--Historybox-->
 		<!--Bei Scroll wird onScroll ausgeführt, somit scrollt es nicht direkt nach ganz unten-->
-		<div class="d-inline-flex flex-column history col-lg-6 col-xl-6 col-xs-12 scrollable border rounded" #scrollMe
-			(scroll)="onScroll()" id="style-7">
+		<div class="shadow-lg d-inline-flex flex-column history col-lg-6 col-xl-6 col-xs-12 scrollable border rounded"
+			#scrollMe (scroll)="onScroll()" id="style-7">
 			<!--Iterierung durch Message Array-->
 			<ng-container class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
 				<!---Prüfung ob Name nicht geändert wurde-->
@@ -45,7 +45,7 @@
 
 						<div class="d-inline-flex"
 							[ngStyle]="{'flex-direction': msg.name==name  ? 'row-reverse' : 'row'}">
-							<p class="pb-1 pt-1 pl-3 pr-3 rounded grey">
+							<p class="shadow-lg pb-1 pt-1 pl-3 pr-3 rounded grey">
 								<b [ngStyle]=" {'color': msg.color}">{{ msg.name }}</b><br>{{msg.content}}
 								<font size=0.5>
 									{{ msg.timesent }}</font>

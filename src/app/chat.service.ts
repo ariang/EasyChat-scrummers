@@ -23,7 +23,6 @@ export class ChatService {
 		const actionUrl = 'https://arianchat.herokuapp.com/api/history/change';
 		return this.http.get<JSON>(actionUrl, options);
 	}
-
 	public getHistory(): Observable<Array<Message>> {
 		const options = {
 			headers: new HttpHeaders().set('Content-Type', 'application/json')
