@@ -14,6 +14,17 @@
 	background: #2eaded;
 	opacity: 80%;
 }
+.roundedcorners {
+  border-radius: 40px;
+}
+.sidebar{
+	background-color: rgba(248, 249, 250, 0.65);
+	border: none;
+}
+.list-group-item{
+	background-color: rgba(248, 249, 250, 0.90);
+	border: none;
+}
 .grey {
 	background-color: rgba(248, 249, 250, 0.95);
 }

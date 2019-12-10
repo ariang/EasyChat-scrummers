@@ -22,6 +22,7 @@ export class ChatHistoryComponent implements OnInit {
 	@HostListener('window:unload', ['$event'])
 	unloadHandler(event) {
 		alert('call unload');
+		this.endChat();
 	}
 	public msgs: Message[] = [];
 	public users: User[] = [];

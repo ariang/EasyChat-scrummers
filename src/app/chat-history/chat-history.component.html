@@ -32,7 +32,7 @@
 		<!--Historybox-->
 		<!--Bei Scroll wird onScroll ausgeführt, somit scrollt es nicht direkt nach ganz unten-->
 		<div #scrollMe
-			class="shadow-lg d-inline-flex flex-column history col-lg-6 col-xl-6 col-xs-12 scrollable rounded"
+			class="shadow-lg d-inline-flex flex-column history col-lg-6 col-xl-6 col-xs-12 scrollable roundedcorners"
 			id="style-7">
 			<!--Iterierung durch Message Array-->
 			<ng-container class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
@@ -84,12 +84,17 @@
 
 		<!--placeholder-->
 		<div class="col-lg-3 d-none d-lg-block d-xl-block">
-			<h1 class="lead">Aktuelle User</h1>
-			<ul class="list-group list-group-flush" *ngFor="let user of users">
-				<li class="list-group-item bg-transparent" [ngStyle]=" {'color': user.color, 'font-weight': '700'}">
-					{{ user.name }}
-				</li>
-			</ul>
+			<div class="sidebar roundedcorners p-3">
+				<h1 class="lead pl-3">Aktuelle User</h1>
+				<div class="d-inline-flex">
+					<ul class="list-group " *ngFor="let user of users">
+						<li class=" list-group-item rounded-pill border-none mt-1 ml-1"
+							[ngStyle]=" {'color': user.color, 'font-weight': '700'}">
+							{{ user.name }}
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 
 
