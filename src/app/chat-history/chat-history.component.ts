@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { Message } from '../message';
 import { UserService } from '../user.service';
 import { ChatService } from '../chat.service';
@@ -14,7 +14,15 @@ export class ChatHistoryComponent implements OnInit {
 	constructor(private data: UserService, private cService: ChatService) { }
 	@ViewChild('scrollMe', { static: false })
 	private myScrollContainer: ElementRef;
-
+	@HostListener('window:beforeunload', ['$event'])
+	beforeunloadHandler(event) {
+		this.endChat();
+		alert('call unload');
+	}
+	@HostListener('window:unload', ['$event'])
+	unloadHandler(event) {
+		alert('call unload');
+	}
 	public msgs: Message[] = [];
 	public users: User[] = [];
 	public message: Message;
@@ -68,18 +76,19 @@ export class ChatHistoryComponent implements OnInit {
 	}
 
 	x = setInterval(() => {
-		this.cService.getChanges().subscribe((response: JSON) => {
-			if (this.msgcount !== response[0].c) {
-				this.refresh();
-				this.msgcount = response[0].c;
-			}
-		});
-		this.cService.getNames().subscribe((response: User[]) => {
-			console.log(response);
-			this.users = response;
-		});
+		if (this.ID.length > 0) {
+			console.log(this.ID);
+			this.cService.getChanges().subscribe((response: JSON) => {
+				if (this.msgcount !== response[0].c) {
+					this.refresh();
+					this.msgcount = response[0].c;
+				}
+			});
+			this.cService.getNames().subscribe((response: User[]) => {
+				this.users = response;
+			});
 
-
+		}
 	}, 1000);
 
 	refresh() {
@@ -91,11 +100,24 @@ export class ChatHistoryComponent implements OnInit {
 		}); this.scrollToBottom();
 
 	}
+	endChat() {
+		if (this.ID.length > 0) {
+			this.cService.deleteUser(this.ID);
+			this.message = new Message();
+			this.message.name = this.name;
+			this.message.content = "hat den Chat verlassen";
+			this.message.timesent = this.getTimeStamp();
+			this.message.oldname = this.oldname;
+			this.message.color = this.color;
+			this.message.id = this.ID;
+			this.message.namechange = true;
+			this.cService.addToHistory(this.message).subscribe((response: Message) => { });
+		}
+	}
 	//ZeitStempel Funktion
 	getTimeStamp() {
 		var now = new Date();
 		var time;
-		console.log(now.getDate());
 		time =
 			now.getDate() +
 			'.\xa0' +
@@ -116,13 +138,8 @@ export class ChatHistoryComponent implements OnInit {
 		this.data.oldname.subscribe((oldname) => (this.oldname = oldname));
 		this.data.newcolor.subscribe((color) => (this.color = color));
 		this.data.newID.subscribe((ID) => (this.ID = ID));
-		this.cService.getHistory().subscribe((response: Message[]) => {
-			this.msgs = response;
-			if (this.msgs.length > 11) {
-				this.msgs.splice(0, this.msgs.length - 10);
-			}
-		});
 	}
+
 	//Scrolling Funktionen
 	ngAfterViewChecked() {
 	}

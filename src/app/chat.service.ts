@@ -34,6 +34,13 @@ export class ChatService {
 		const actionUrl = 'https://arianchat.herokuapp.com/api/history/name/' + message.id;
 		return this.http.put<Message>(actionUrl, message, options);
 	}
+	public deleteUser(id: String) {
+		const actionUrl = 'https://arianchat.herokuapp.com/api/history/name/' + id;
+		console.log("Ending chat..");
+		let xhr = new XMLHttpRequest()
+		xhr.open("DELETE", actionUrl, false);
+		xhr.send();
+	}
 	public getNames(): Observable<Array<User>> {
 		const options = {
 			headers: new HttpHeaders().set('Content-Type', 'application/json')
