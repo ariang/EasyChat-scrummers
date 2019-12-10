@@ -49,6 +49,7 @@ export class ChatHistoryComponent implements OnInit {
 			this.msgs.splice(0, this.msgs.length - 10);
 		}
 		this.msgcount = this.msgcount++;
+		this.scrollToBottom();
 	}
 
 	x = setInterval(() => {
@@ -66,7 +67,8 @@ export class ChatHistoryComponent implements OnInit {
 			if (this.msgs.length > 11) {
 				this.msgs.splice(0, this.msgs.length - 10);
 			}
-		});
+		}); this.scrollToBottom();
+
 	}
 	//ZeitStempel Funktion
 	getTimeStamp() {
@@ -101,9 +103,8 @@ export class ChatHistoryComponent implements OnInit {
 	}
 	//Scrolling Funktionen
 	ngAfterViewChecked() {
-		this.scrollToBottom();
 	}
-	//Wenn gescrollt wird wird disable scrolldown auf true gesetzt damit es nicht immer runter springt
+	//Wenn gescrollt wird, wird disable scrolldown auf true gesetzt damit es nicht immer runter springt
 	public onScroll() {
 		let element = this.myScrollContainer.nativeElement;
 		let atBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
@@ -119,9 +120,9 @@ export class ChatHistoryComponent implements OnInit {
 			return;
 		}
 		try {
-			setTimeout(() => {
-				this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-			}, 500);
+
+			window.setTimeout(() => this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight, 2000);
+
 		} catch (err) { }
 	}
 }
