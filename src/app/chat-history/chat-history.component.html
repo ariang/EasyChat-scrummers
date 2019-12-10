@@ -45,7 +45,7 @@
 					<ng-template #thenBlock>
 
 						<div class="d-inline-flex mt-1"
-							[ngStyle]="{'flex-direction': msg.name==name  ? 'row-reverse' : 'row'}">
+							[ngStyle]="{'flex-direction': msg.id==ID  ? 'row-reverse' : 'row'}">
 							<p class="shadow pb-1 pt-1 pl-3 pr-3 rounded grey">
 								<b [ngStyle]=" {'color': msg.color}">{{ msg.name }}</b><br>{{msg.content}}
 								<font size=0.5>
@@ -58,7 +58,7 @@
 					<ng-template #elseBlock>
 						<!--Content Zeit  darstellen-->
 						<div class="d-inline-flex mt-1"
-							[ngStyle]="{'flex-direction': msg.name==name  ? 'row-reverse' : 'row'}">
+							[ngStyle]="{'flex-direction': msg.id==ID  ? 'row-reverse' : 'row'}">
 							<p class="pb-1 pt-1 pl-3 pr-3 rounded grey">{{msg.content}} <font size=0.5>
 									{{ msg.timesent }}</font>
 							</p>
@@ -81,7 +81,14 @@
 		</div>
 
 		<!--placeholder-->
-		<div class="col-lg-3 d-none d-lg-block d-xl-block"> </div>
+		<div class="col-lg-3 d-none d-lg-block d-xl-block">
+			<h1 class="lead">Aktuelle User</h1>
+			<ul class="list-group list-group-flush" *ngFor="let user of users">
+				<li class="list-group-item bg-transparent" [ngStyle]=" {'color': user.color, 'font-weight': '700'}">
+					{{ user.name }}
+				</li>
+			</ul>
+		</div>
 
 
 	</div>

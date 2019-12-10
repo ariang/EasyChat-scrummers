@@ -3,6 +3,7 @@ import { Message } from '../message';
 import { UserService } from '../user.service';
 import { ChatService } from '../chat.service';
 import { compilePipeFromRender2 } from '@angular/compiler/src/render3/r3_pipe_compiler';
+import { User } from '../user';
 
 @Component({
 	selector: 'app-chat-history',
@@ -15,22 +16,29 @@ export class ChatHistoryComponent implements OnInit {
 	private myScrollContainer: ElementRef;
 
 	public msgs: Message[] = [];
+	public users: User[] = [];
 	public message: Message;
 	name: string;
 	oldname: string;
 	disableScrollDown = false;
 	color: string;
 	msgcount = 0;
+	ID: string;
 	//Sendefunktion der Nachricht
 	saveMessage(value: string, changed: boolean) {
 		this.message = new Message();
 		this.message.name = this.name;
 		this.message.content = value;
 		this.message.timesent = this.getTimeStamp();
+		this.message.oldname = this.oldname;
 		this.message.color = this.color;
+		this.message.id = this.ID;
 		if (changed) {
 			this.message.namechange = true;
 			this.message.firstmessage = false; //Namensänderung Nachricht wird gesendet
+			this.cService.setName(this.message).subscribe((response: Message) => { });
+			this.cService.addToHistory(this.message).subscribe((response: Message) => { });
+
 		} else {
 			if (
 				(this.msgs[this.msgs.length - 1].name !== null && //ist der letzte gespeicherte name nicht leer?
@@ -41,8 +49,9 @@ export class ChatHistoryComponent implements OnInit {
 			} else {
 				this.message.firstmessage = false; //sonst nur Nachricht und Zeit
 			}
+			this.cService.addToHistory(this.message).subscribe((response: Message) => { });
 		}
-		this.cService.addToHistory(this.message).subscribe((response: Message) => { });
+
 		//Zuerst wird geprüft ob Message Array grässer als 11 ist
 		if (this.msgs.length > 11) {
 			//Von ersten bis zur zehntletzten nachricht werden alle gelöscht aus dem Array
@@ -59,6 +68,12 @@ export class ChatHistoryComponent implements OnInit {
 				this.msgcount = response[0].c;
 			}
 		});
+		this.cService.getNames().subscribe((response: User[]) => {
+			console.log(response);
+			this.users = response;
+		});
+
+
 	}, 1000);
 
 	refresh() {
@@ -94,6 +109,7 @@ export class ChatHistoryComponent implements OnInit {
 		this.data.currentname.subscribe((name) => (this.name = name));
 		this.data.oldname.subscribe((oldname) => (this.oldname = oldname));
 		this.data.newcolor.subscribe((color) => (this.color = color));
+		this.data.newID.subscribe((ID) => (this.ID = ID));
 		this.cService.getHistory().subscribe((response: Message[]) => {
 			this.msgs = response;
 			if (this.msgs.length > 11) {

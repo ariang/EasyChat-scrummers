@@ -13,8 +13,10 @@ export class UserService {
 	oldname = this.oname.asObservable();
 	private color = new BehaviorSubject('');
 	newcolor = this.color.asObservable();
+	private ID = new BehaviorSubject('');
+	newID = this.ID.asObservable();
 
-	constructor() {}
+	constructor() { }
 	//function to set Name
 	setName(value: string) {
 		this.name.next(value);
@@ -24,5 +26,8 @@ export class UserService {
 	}
 	setColor(value: string) {
 		this.color.next(value);
+	}
+	setID(value: string) {
+		this.ID.next(value);
 	}
 }

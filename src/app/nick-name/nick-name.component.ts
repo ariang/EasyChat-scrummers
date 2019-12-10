@@ -4,7 +4,7 @@ import { UserService } from '../user.service';
 @Component({
 	selector: 'app-nick-name',
 	templateUrl: './nick-name.component.html',
-	styleUrls: [ './nick-name.component.css' ]
+	styleUrls: ['./nick-name.component.css']
 })
 export class NickNameComponent implements OnInit {
 	newname: string;
@@ -13,7 +13,8 @@ export class NickNameComponent implements OnInit {
 	name: string;
 	namemessage: string;
 	color: string;
-	constructor(private data: UserService) {}
+	ID: string;
+	constructor(private data: UserService) { }
 
 	@Output() nameEvent = new EventEmitter<string>();
 
@@ -21,12 +22,14 @@ export class NickNameComponent implements OnInit {
 		this.data.currentname.subscribe((name) => (this.name = name));
 		this.data.oldname.subscribe((oldname) => (this.oldname = oldname));
 		this.data.newcolor.subscribe((color) => (this.color = color));
+		this.data.newID.subscribe((ID) => (this.ID = ID));
 	}
 	//Set the new Name with RegEx
 	newName() {
 		if (this.checkName(this.newname)) {
 			this.data.setName(this.newname);
 			this.data.setOName(this.newname);
+			this.data.setID(Math.random().toString(36).substring(2, 6) + Math.random().toString(36).substring(2, 6));
 			this.data.setColor(this.getRandomColor());
 			this.namemessage = ' hat den Chat betreten';
 			this.nameEvent.emit(this.namemessage);
@@ -61,15 +64,15 @@ export class NickNameComponent implements OnInit {
 	}
 	getRandomColor() {
 		var letters = '0123456789ABCDEF';
-		var lettersblue = '01234';
+		var lettersblue = '0123456789';
 		var color = '#';
 		//Rot und Grün können normal gesetzt werden
-		for (var i = 0; i < 2; i++) {
+		for (var i = 0;i < 2;i++) {
 			color += letters[Math.floor(Math.random() * 16)];
 		}
-		//Zur erreichung eines leserlichen Namens wird Blau gecappt
-		for (var i = 0; i < 4; i++) {
-			color += lettersblue[Math.floor(Math.random() * 5)];
+		//Zur erreichung eines leserlichen Namens wird Blau und Grün gecappt
+		for (var i = 0;i < 4;i++) {
+			color += lettersblue[Math.floor(Math.random() * 10)];
 		}
 		console.log(color);
 		return color;
