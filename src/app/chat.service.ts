@@ -26,6 +26,14 @@ export class ChatService {
 		const actionUrl = 'https://arianchat.herokuapp.com/api/history/name';
 		return this.http.post<Message>(actionUrl, message, options);
 	}
+	public changeName(message: Message): Observable<Message> {
+		const options = {
+			headers: new HttpHeaders().set('Content-Type', 'application/json')
+		};
+		console.log(message);
+		const actionUrl = 'https://arianchat.herokuapp.com/api/history/name/' + message.id;
+		return this.http.put<Message>(actionUrl, message, options);
+	}
 	public getNames(): Observable<Array<User>> {
 		const options = {
 			headers: new HttpHeaders().set('Content-Type', 'application/json')
