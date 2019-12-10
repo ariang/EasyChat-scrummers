@@ -70,7 +70,8 @@
 				<ng-template #elseBlock>
 					<span class="d-flex flex-row justify-content-center" style="font-size:small">
 						<!--Schwarz und Kursiv die Nachricht anzeigen-->
-						<p class="rounded mt-2 m-1 notification pl-2 pr-2" style="text-align:center; color:black; ">
+						<p class="rounded mt-2 m-1 notification pl-2 pr-2 shadow"
+							style="text-align:center; color:black; ">
 							<span [ngStyle]=" {'color': msg.color, 'font-weight': '700'}">{{msg.name}}<span
 									class="text-muted">#{{ msg.id }} </span></span>
 							{{msg.content}}
@@ -83,14 +84,14 @@
 		</div>
 
 		<!--placeholder-->
-		<div class="col-lg-3 d-none d-lg-block d-xl-block">
-			<div class="sidebar roundedcorners p-3">
+		<div class="col-lg-3 d-none d-lg-block d-xl-block ">
+			<div class="sidebar roundedcorners p-3 shadow-lg">
 				<h1 class="lead pl-3">Aktuelle User</h1>
 				<div class="d-inline-flex">
 					<ul class="list-group " *ngFor="let user of users">
-						<li class=" list-group-item rounded-pill border-none mt-1 ml-1"
+						<li class=" list-group-item rounded-pill border-none mt-1 ml-1 shadow"
 							[ngStyle]=" {'color': user.color, 'font-weight': '700'}">
-							{{ user.name }}
+							{{ user.name }}<span class="text-muted">#{{ user.id }} </span>
 						</li>
 					</ul>
 				</div>

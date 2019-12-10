@@ -4,7 +4,7 @@
 		<div class="col-lg-3"></div>
 
 		<!--Chatbox disabled while no Username-->
-		<div class="input-group col-lg-6 col-sm-12 mt-1">
+		<div class="input-group col-lg-6 col-sm-12 mt-1 shadow">
 			<!--mit min height wird minimum der Höhe gesetzt um eine sichtbare Nachricht zu haben-->
 			<textarea style="min-height:40px;" type="text" rows="1" class="form-control rounded" [disabled]="!name"
 				[(ngModel)]="chatmessage" (keyup.enter)="sendMessage()" maxlength="1000"></textarea>
