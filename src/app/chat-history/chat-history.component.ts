@@ -36,7 +36,13 @@ export class ChatHistoryComponent implements OnInit {
 		if (changed) {
 			this.message.namechange = true;
 			this.message.firstmessage = false; //Namensänderung Nachricht wird gesendet
-			this.cService.setName(this.message).subscribe((response: Message) => { });
+
+			if (this.name == this.oldname) {
+				this.cService.setName(this.message).subscribe((response: Message) => { });
+			} else {
+				this.cService.changeName(this.message).subscribe((response: Message) => { });
+			}
+
 			this.cService.addToHistory(this.message).subscribe((response: Message) => { });
 
 		} else {
