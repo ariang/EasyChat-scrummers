@@ -45,7 +45,7 @@ export class NickNameComponent implements OnInit {
 			if (this.checkName(this.changename)) {
 				this.data.setOName(this.name);
 				this.data.setName(this.changename);
-				this.namemessage = 'Name geändert von ' + this.oldname + ' zu ' + this.name;
+				this.namemessage = 'hat den Namen geändert von ' + this.oldname + ' zu ' + this.name;
 				this.nameEvent.emit(this.namemessage);
 				this.changename = null;
 			}
