@@ -37,7 +37,7 @@
 			<!--Iterierung durch Message Array-->
 			<ng-container class="message font-weight-light animated fadeIn" *ngFor="let msg of msgs">
 				<!---Prüfung ob Name nicht geändert wurde-->
-				<div *ngIf="!msg.namechange; then thenBlock else elseBlock"></div>
+				<div *ngIf="msg.id == ID; then thenBlock else elseBlock"></div>
 				<ng-template #thenBlock>
 					<!--Falls selber Name prüfen ob es die erste Message ist-->
 					<div *ngIf="msg.firstmessage; then thenBlock else elseBlock"></div>
@@ -47,7 +47,9 @@
 						<div class="d-inline-flex mt-1"
 							[ngStyle]="{'flex-direction': msg.id==ID  ? 'row-reverse' : 'row'}">
 							<p class="shadow pb-1 pt-1 pl-3 pr-3 rounded grey">
-								<b [ngStyle]=" {'color': msg.color}">{{ msg.name }}</b><br>{{msg.content}}
+								<b [ngStyle]=" {'color': msg.color}">{{ msg.name }}<span
+										class="text-muted">#{{ msg.id }} </span>
+								</b><br>{{msg.content}}
 								<font size=0.5>
 									{{ msg.timesent }}</font>
 							</p>

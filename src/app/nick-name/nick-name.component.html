@@ -1,70 +1,71 @@
 <div class="container-fluid">
-    <div id="historycon" class="row">
-        <!--placeholder-->
-        <div class="col-3"></div>
+	<div id="historycon" class="row">
+		<!--placeholder-->
+		<div class="col-3"></div>
 
-        <!--Username Input-->
-        <div class="nickname col-lg-6 col-sm-12 mt-1 mb-1">
-            <div class="input-group" [hidden]="name">
-                <input type="text" class="form-control rounded" [(ngModel)]="newname" (keyup.enter)="newName()"
-                    placeholder="Setze den Nickname um loszuchatten" maxlength="12" />
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" id="submitbtn" [hidden]="!newname"
-                        (click)="newName()">set</button>
-                </div>
-            </div>
+		<!--Username Input-->
+		<div class="nickname col-lg-6 col-sm-12 mt-1 mb-1">
+			<div class="input-group" [hidden]="name">
+				<input type="text" class="form-control rounded" [(ngModel)]="newname" (keyup.enter)="newName()"
+					placeholder="Setze den Nickname um loszuchatten" maxlength="12" />
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" id="submitbtn" [hidden]="!newname"
+						(click)="newName()">set</button>
+				</div>
+			</div>
 
-            <div class="d-flex justify-content-between align-items-center" [hidden]="!name">
-                <div class="grey rounded pl-2 pr-3 shadow" style="font-size: large; color:black">
-                    <p class="float-left currentname" [hidden]="!name">Dein
-                        Nickname: <span [ngStyle]="{'color': color, 'font-weight': 700 }">{{name}}</span></p>
+			<div class="d-flex justify-content-between align-items-center" [hidden]="!name">
+				<div class="grey rounded pl-2 pr-3 shadow" style="font-size: large; color:black">
+					<p class="float-left currentname" [hidden]="!name">Dein
+						Nickname: <span [ngStyle]="{'color': color, 'font-weight': 700 }">{{name}}<span
+								class="text-muted">#{{ msg.id }} </span></span></p>
 
-                </div>
-                <div>
-                    <button type="button" [hidden]="!name" class="shadow rounded-pill btn btn-light btn-sm" id="change"
-                        data-toggle="modal" data-target="#exampleModal">
-                        Nickname ändern
-                    </button>
-                </div>
-            </div>
+				</div>
+				<div>
+					<button type="button" [hidden]="!name" class="shadow rounded-pill btn btn-light btn-sm" id="change"
+						data-toggle="modal" data-target="#exampleModal">
+						Nickname ändern
+					</button>
+				</div>
+			</div>
 
 
-            <div class="modal fade text-dark" id="exampleModal" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Dein Nickname: {{name}}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+			<div class="modal fade text-dark" id="exampleModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Dein Nickname: {{name}}</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
 
-                        <div class="modal-body">
-                            <form role="form">
-                                <div class="form-group">
-                                    Nickname ändern auf:
-                                    <input type="text" class="form-control" [(ngModel)]="changename" name="changename"
-                                        maxlength="12" />
-                                </div>
-                                <div class="modal-footer">
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" id="changebtn"
-                                            data-dismiss="modal" (click)="changeName()">Setze neuen Nickname</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+						<div class="modal-body">
+							<form role="form">
+								<div class="form-group">
+									Nickname ändern auf:
+									<input type="text" class="form-control" [(ngModel)]="changename" name="changename"
+										maxlength="12" />
+								</div>
+								<div class="modal-footer">
+									<div class="form-group">
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary" id="changebtn"
+											data-dismiss="modal" (click)="changeName()">Setze neuen Nickname</button>
+									</div>
+								</div>
+							</form>
+						</div>
 
-                    </div>
+					</div>
 
-                </div>
-            </div>
-        </div>
+				</div>
+			</div>
+		</div>
 
-        <!--placeholder-->
-        <div class="col-3"></div>
-    </div>
+		<!--placeholder-->
+		<div class="col-3"></div>
+	</div>
 </div>

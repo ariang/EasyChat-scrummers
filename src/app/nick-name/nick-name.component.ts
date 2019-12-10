@@ -29,7 +29,7 @@ export class NickNameComponent implements OnInit {
 		if (this.checkName(this.newname)) {
 			this.data.setName(this.newname);
 			this.data.setOName(this.newname);
-			this.data.setID(Math.random().toString(36).substring(2, 6) + Math.random().toString(36).substring(2, 6));
+			this.data.setID(Math.floor((Math.random() * 1000) + 1).toString());
 			this.data.setColor(this.getRandomColor());
 			this.namemessage = ' hat den Chat betreten';
 			this.nameEvent.emit(this.namemessage);
