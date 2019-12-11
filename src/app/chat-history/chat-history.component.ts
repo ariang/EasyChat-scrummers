@@ -62,9 +62,9 @@ export class ChatHistoryComponent implements OnInit {
 		}
 
 		//Zuerst wird geprüft ob Message Array grässer als 11 ist
-		if (this.msgs.length > 11) {
+		if (this.msgs.length > 21) {
 			//Von ersten bis zur zehntletzten nachricht werden alle gelöscht aus dem Array
-			this.msgs.splice(0, this.msgs.length - 10);
+			this.msgs.splice(0, this.msgs.length - 20);
 		}
 		this.msgcount = this.msgcount++;
 		this.scrollToBottom();
