@@ -60,12 +60,6 @@ export class ChatHistoryComponent implements OnInit {
 			}
 			this.cService.addToHistory(this.message).subscribe((response: Message) => {});
 		}
-
-		//Zuerst wird geprüft ob Message Array grässer als 11 ist
-		if (this.msgs.length > 21) {
-			//Von ersten bis zur zehntletzten nachricht werden alle gelöscht aus dem Array
-			this.msgs.splice(0, this.msgs.length - 20);
-		}
 		this.msgcount = this.msgcount++;
 		this.scrollToBottom();
 	}
@@ -88,9 +82,6 @@ export class ChatHistoryComponent implements OnInit {
 	refresh() {
 		this.cService.getHistory().subscribe((response: Message[]) => {
 			this.msgs = response;
-			if (this.msgs.length > 11) {
-				this.msgs.splice(0, this.msgs.length - 10);
-			}
 		});
 		this.scrollToBottom();
 	}
