@@ -8,21 +8,16 @@ import { User } from '../user';
 @Component({
 	selector: 'app-chat-history',
 	templateUrl: './chat-history.component.html',
-	styleUrls: ['./chat-history.component.css']
+	styleUrls: [ './chat-history.component.css' ]
 })
 export class ChatHistoryComponent implements OnInit {
-	constructor(private data: UserService, private cService: ChatService) { }
+	constructor(private data: UserService, private cService: ChatService) {}
 	@ViewChild('scrollMe', { static: false })
 	private myScrollContainer: ElementRef;
-	@HostListener('window:beforeunload', ['$event'])
+	@HostListener('window:beforeunload', [ '$event' ])
 	beforeunloadHandler(event) {
 		this.endChat();
 		alert('call unload');
-	}
-	@HostListener('window:unload', ['$event'])
-	unloadHandler(event) {
-		alert('call unload');
-		this.endChat();
 	}
 	public msgs: Message[] = [];
 	public users: User[] = [];
@@ -47,13 +42,12 @@ export class ChatHistoryComponent implements OnInit {
 			this.message.firstmessage = false; //Namensänderung Nachricht wird gesendet
 
 			if (this.name == this.oldname) {
-				this.cService.setName(this.message).subscribe((response: Message) => { });
+				this.cService.setName(this.message).subscribe((response: Message) => {});
 			} else {
-				this.cService.changeName(this.message).subscribe((response: Message) => { });
+				this.cService.changeName(this.message).subscribe((response: Message) => {});
 			}
 
-			this.cService.addToHistory(this.message).subscribe((response: Message) => { });
-
+			this.cService.addToHistory(this.message).subscribe((response: Message) => {});
 		} else {
 			if (
 				(this.msgs[this.msgs.length - 1].name !== null && //ist der letzte gespeicherte name nicht leer?
@@ -64,7 +58,7 @@ export class ChatHistoryComponent implements OnInit {
 			} else {
 				this.message.firstmessage = false; //sonst nur Nachricht und Zeit
 			}
-			this.cService.addToHistory(this.message).subscribe((response: Message) => { });
+			this.cService.addToHistory(this.message).subscribe((response: Message) => {});
 		}
 
 		//Zuerst wird geprüft ob Message Array grässer als 11 ist
@@ -78,7 +72,6 @@ export class ChatHistoryComponent implements OnInit {
 
 	x = setInterval(() => {
 		if (this.ID.length > 0) {
-			console.log(this.ID);
 			this.cService.getChanges().subscribe((response: JSON) => {
 				if (this.msgcount !== response[0].c) {
 					this.refresh();
@@ -87,8 +80,8 @@ export class ChatHistoryComponent implements OnInit {
 			});
 			this.cService.getNames().subscribe((response: User[]) => {
 				this.users = response;
+				console.log(this.users);
 			});
-
 		}
 	}, 1000);
 
@@ -98,21 +91,30 @@ export class ChatHistoryComponent implements OnInit {
 			if (this.msgs.length > 11) {
 				this.msgs.splice(0, this.msgs.length - 10);
 			}
-		}); this.scrollToBottom();
-
+		});
+		this.scrollToBottom();
 	}
 	endChat() {
 		if (this.ID.length > 0) {
-			this.cService.deleteUser(this.ID);
-			this.message = new Message();
-			this.message.name = this.name;
-			this.message.content = "hat den Chat verlassen";
-			this.message.timesent = this.getTimeStamp();
-			this.message.oldname = this.oldname;
-			this.message.color = this.color;
-			this.message.id = this.ID;
-			this.message.namechange = true;
-			this.cService.addToHistory(this.message).subscribe((response: Message) => { });
+			var here = false;
+			this.users.forEach((element) => {
+				if (element.id == this.ID) {
+					return (here = true);
+				}
+			});
+			if (here) {
+				this.cService.deleteUser(this.ID);
+				this.message = new Message();
+				this.message.name = this.name;
+				this.message.content = 'hat den Chat verlassen';
+				this.message.timesent = this.getTimeStamp();
+				this.message.oldname = this.oldname;
+				this.message.color = this.color;
+				this.message.id = this.ID;
+				this.message.namechange = true;
+				this.cService.addToHistory(this.message).subscribe((response: Message) => {});
+				this.scrollToBottom();
+			}
 		}
 	}
 	//ZeitStempel Funktion
@@ -142,8 +144,7 @@ export class ChatHistoryComponent implements OnInit {
 	}
 
 	//Scrolling Funktionen
-	ngAfterViewChecked() {
-	}
+	ngAfterViewChecked() {}
 	//Wenn gescrollt wird, wird disable scrolldown auf true gesetzt damit es nicht immer runter springt
 	public onScroll() {
 		let element = this.myScrollContainer.nativeElement;
@@ -160,10 +161,12 @@ export class ChatHistoryComponent implements OnInit {
 			return;
 		}
 		try {
-
-			window.setTimeout(() => this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight, 2000);
-
-		} catch (err) { }
+			window.setTimeout(
+				() =>
+					(this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight),
+				2000
+			);
+		} catch (err) {}
 	}
 }
 var monthNames = [
