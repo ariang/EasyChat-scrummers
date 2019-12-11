@@ -85,9 +85,9 @@
 
 		<!--placeholder-->
 		<div class="col-lg-3 d-none d-lg-block d-xl-block ">
-			<div class="sidebar roundedcorners p-3 shadow-lg">
+			<div class="d-inline-flex flex-column sidebar roundedcorners p-3 shadow-lg">
 				<h1 class="lead pl-3">Aktuelle User</h1>
-				<div class="d-inline-flex">
+				<div class="">
 					<ul class="list-group " *ngFor="let user of users">
 						<li class=" list-group-item rounded-pill border-none mt-1 ml-1 shadow"
 							[ngStyle]=" {'color': user.color, 'font-weight': '700'}">

@@ -103,7 +103,6 @@ export class ChatHistoryComponent implements OnInit {
 				}
 			});
 			if (here) {
-				this.cService.deleteUser(this.ID);
 				this.message = new Message();
 				this.message.name = this.name;
 				this.message.content = 'hat den Chat verlassen';
@@ -113,6 +112,7 @@ export class ChatHistoryComponent implements OnInit {
 				this.message.id = this.ID;
 				this.message.namechange = true;
 				this.cService.addToHistory(this.message).subscribe((response: Message) => {});
+				this.cService.deleteUser(this.ID);
 				this.scrollToBottom();
 			}
 		}
