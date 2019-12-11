@@ -10,6 +10,7 @@ import { ChatBarComponent } from './chat-bar/chat-bar.component';
 import { ChatHistoryComponent } from './chat-history/chat-history.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NickNameComponent } from './nick-name/nick-name.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,7 @@ import { NickNameComponent } from './nick-name/nick-name.component';
 		ChatHistoryComponent,
 		NickNameComponent
 	],
-	imports: [ BrowserModule, FormsModule, BrowserAnimationsModule, HttpClientModule ],
+	imports: [ BrowserModule, FormsModule, BrowserAnimationsModule, HttpClientModule, PickerModule ],
 	providers: [],
 	bootstrap: [ AppComponent ]
 })

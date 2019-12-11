@@ -4,7 +4,7 @@ import { UserService } from '../user.service';
 @Component({
 	selector: 'app-nick-name',
 	templateUrl: './nick-name.component.html',
-	styleUrls: ['./nick-name.component.css']
+	styleUrls: [ './nick-name.component.css' ]
 })
 export class NickNameComponent implements OnInit {
 	newname: string;
@@ -14,7 +14,7 @@ export class NickNameComponent implements OnInit {
 	namemessage: string;
 	color: string;
 	ID: string;
-	constructor(private data: UserService) { }
+	constructor(private data: UserService) {}
 
 	@Output() nameEvent = new EventEmitter<string>();
 
@@ -29,9 +29,9 @@ export class NickNameComponent implements OnInit {
 		if (this.checkName(this.newname)) {
 			this.data.setName(this.newname);
 			this.data.setOName(this.newname);
-			this.data.setID(Math.floor((Math.random() * 1000) + 1).toString());
+			this.data.setID(Math.floor(Math.random() * 1000 + 1).toString());
 			this.data.setColor(this.getRandomColor());
-			this.namemessage = ' hat den Chat betreten';
+			this.namemessage = 'hat den Chat betreten';
 			this.nameEvent.emit(this.namemessage);
 		} else {
 			this.newname = '';
@@ -67,11 +67,11 @@ export class NickNameComponent implements OnInit {
 		var lettersblue = '0123456789';
 		var color = '#';
 		//Rot und Grün können normal gesetzt werden
-		for (var i = 0;i < 2;i++) {
+		for (var i = 0; i < 2; i++) {
 			color += letters[Math.floor(Math.random() * 16)];
 		}
 		//Zur erreichung eines leserlichen Namens wird Blau und Grün gecappt
-		for (var i = 0;i < 4;i++) {
+		for (var i = 0; i < 4; i++) {
 			color += lettersblue[Math.floor(Math.random() * 10)];
 		}
 		console.log(color);

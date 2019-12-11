@@ -48,7 +48,7 @@
 							[ngStyle]="{'flex-direction': msg.id==ID  ? 'row-reverse' : 'row'}">
 							<p class="shadow pb-1 pt-1 pl-3 pr-3 rounded grey">
 								<b [ngStyle]=" {'color': msg.color}">{{ msg.name }}</b><span
-									class="text-muted">#{{ msg.id }} </span><br>{{msg.content}}
+									class="text-muted">#{{ msg.id }}</span><br>{{msg.content}}
 								<font size=0.5>
 									{{ msg.timesent }}</font>
 							</p>
@@ -73,7 +73,7 @@
 						<p class="rounded mt-2 m-1 notification pl-2 pr-2 shadow"
 							style="text-align:center; color:black; ">
 							<span [ngStyle]=" {'color': msg.color, 'font-weight': '700'}">{{msg.name}}<span
-									class="text-muted">#{{ msg.id }} </span></span>
+									class="text-muted">#{{ msg.id }}</span></span>
 							{{msg.content}}
 						</p>
 					</span>

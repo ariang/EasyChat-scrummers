@@ -2,3 +2,26 @@
 	padding-left: 1px;
 	padding-right: 1px;
 }
+#emojibtn,
+#submitbtn {
+	background: white;
+}
+.emoji-mart-bar {
+	display: none;
+}
+section.emoji-mart-category {
+	display: none !important;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus:not(:disabled):not(.disabled),
+.btn:focus,
+.btn:active,
+.btn:hover,
+.form-control:hover,
+.form-control:focus,
+.form-control:active {
+	box-shadow: none !important;
+	outline: 0;
+}

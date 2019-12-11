@@ -1,15 +1,24 @@
 <div class="container-fluid">
 	<div class="row">
 		<!--placeholder-->
-		<div class="col-lg-3"></div>
+		<div class="col-lg-3">
+		</div>
 
 		<!--Chatbox disabled while no Username-->
-		<div class="input-group col-lg-6 col-sm-12 mt-1 shadow">
+		<div class="input-group col-lg-6 col-sm-12 mt-1">
 			<!--mit min height wird minimum der Höhe gesetzt um eine sichtbare Nachricht zu haben-->
+			<div class="input-group-prepend">
+				<button [disabled]="!name" class="btn rounded mr-1" id="emojibtn" (click)="openEmojis()">😀</button>
+				<emoji-mart [showPreview]="false" [totalFrequentLines]="1" title="Pick your emoji…"
+					[style]=" { position: 'fixed' , top: '20vh' }" (emojiClick)="
+					addEmoji($event)" [hidden]="!isShow">
+				</emoji-mart>
+			</div>
 			<textarea style="min-height:40px;" type="text" rows="1" class="form-control rounded" [disabled]="!name"
-				[(ngModel)]="chatmessage" (keyup.enter)="sendMessage()" maxlength="1000"></textarea>
+				[(ngModel)]="chatmessage" (keyup.enter)="sendMessage()" maxlength="1000"
+				(click)="closeEmojis()"></textarea>
 			<div class="input-group-append">
-				<button class="btn btn-outline-secondary" id="submitbtn" [hidden]="!chatmessage"
+				<button class="btn rounded ml-1" id="submitbtn" [hidden]="!chatmessage"
 					(click)="sendMessage()">send</button>
 			</div>
 		</div>
