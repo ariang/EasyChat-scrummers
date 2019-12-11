@@ -74,7 +74,6 @@ export class ChatHistoryComponent implements OnInit {
 			});
 			this.cService.getNames().subscribe((response: User[]) => {
 				this.users = response;
-				console.log(this.users);
 			});
 		}
 	}, 1000);
