@@ -49,8 +49,7 @@
 							<p class="shadow pb-1 pt-1 pl-3 pr-3 rounded grey">
 								<b [ngStyle]=" {'color': msg.color}">{{ msg.name }}</b><span
 									class="text-muted">#{{ msg.id }}</span><br>{{msg.content}}
-								<font size=0.5><br>
-									{{ msg.timesent }}</font>
+								<font size=0.5><br>{{ msg.timesent }}</font>
 							</p>
 
 						</div>
@@ -60,8 +59,8 @@
 						<!--Content Zeit  darstellen-->
 						<div class="d-inline-flex mt-1"
 							[ngStyle]="{'flex-direction': msg.id==ID  ? 'row-reverse' : 'row'}">
-							<p class="pb-1 pt-1 pl-3 pr-3 rounded grey">{{msg.content}} <font size=0.5><br>
-									{{ msg.timesent }}</font>
+							<p class="pb-1 pt-1 pl-3 pr-3 rounded grey">{{msg.content}} <font size=0.5>
+									<br>{{ msg.timesent }}</font>
 							</p>
 						</div>
 					</ng-template>

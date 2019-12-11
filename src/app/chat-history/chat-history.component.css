@@ -6,7 +6,6 @@
 }
 .history {
 	padding-top: 10px;
-
 	padding-bottom: 5px;
 	height: 45vh;
 	display: block;
@@ -32,9 +31,6 @@
 }
 .grey {
 	background-color: rgba(248, 249, 250, 0.95);
-}
-.grey-outgoing {
-	background-color: rgba(173, 169, 169, 0.95);
 }
 #style-7::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -97,7 +93,7 @@ p {
 	white-space: pre-wrap;
 	word-break: break-word;
 	opacity: 100%;
-	max-width: 47%;
+	max-width: 69%;
 }
 
 .bubbles {

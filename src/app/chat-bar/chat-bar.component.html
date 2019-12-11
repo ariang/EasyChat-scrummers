@@ -5,11 +5,11 @@
 		</div>
 
 		<!--Chatbox disabled while no Username-->
-		<div class="input-group col-lg-6 col-sm-12 mt-1">
+		<div class="input-group col-lg-6 col-sm-12 mt-1" style="z-index: 10;">
 			<!--mit min height wird minimum der Höhe gesetzt um eine sichtbare Nachricht zu haben-->
 			<div class="input-group-prepend">
 				<button [disabled]="!name" class="btn rounded mr-1" id="emojibtn" (click)="openEmojis()">😀</button>
-				<emoji-mart [showPreview]="false" [totalFrequentLines]="1" title="Pick your emoji…"
+				<emoji-mart [showPreview]="false" [perLine]="6" [totalFrequentLines]="1" title="Pick your emoji…"
 					[style]=" { position: 'fixed' , bottom: '110px' }" (emojiClick)="
 					addEmoji($event)" [hidden]="!isShow">
 				</emoji-mart>
