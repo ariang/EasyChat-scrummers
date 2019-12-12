@@ -154,7 +154,7 @@ export class ChatHistoryComponent implements OnInit {
 			window.setTimeout(
 				() =>
 					(this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight),
-				2000
+				700
 			);
 		} catch (err) {}
 	}
